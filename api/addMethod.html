@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>addMethod</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/content.css" />
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">定义类或对象</a><i>&gt;</i><span>addMethods</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+addMethods(methods)
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+        在您用K.fn.create创建了对象的同时，你也就获取到了KClass#addMethods来为您新创建的类增添新的实例方法，或者重写类中已经定义的方法。
+        如果用addMethods创建的新的实例方法覆盖了父类中相同名称的方法， 也可以用Ksuper来调用夫类的方法。
+
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>methods</b><em>(可选)</em>
+                    </td>
+                    <td>
+                        Literal
+                    </td>
+                    <td>
+                        字面量属性，方法 
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Function
+                    </td>
+                    <td>
+                        返回创建的Class 
+                    </td>
+               </tr>
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 利用KClass创建对象,继承父对象示例</p>
+      </div>
+<textarea class="js code code_js" style="height:380px; ">
+ var Animal = K.fn.create({   
+    init: function(name, sound) {     
+        this.name = name;     
+        this.sound = sound;   
+    },   
+    speak: function() {     
+        alert(this.name + " says: " + this.sound + "!");   
+    } 
+  }); 
+  // subclassing Animal 
+  var Elephant = K.fn.create(Animal, {   
+    initialize: function(Ksuper, name) {     
+        Ksuper(name, 'I’m an Elephant');   
+    } 
+  }); 
+  var Elephantlady = new Elephant("Elephantlady", "hissssssss"); 
+  Elephantlady.speak(); 
+  //-> alerts "Elephantlady says: I’m an Elephant!" 
+  //  如果用addMethods创建的新的实例方法覆盖了父类中相同名称的方法， 也可以用Ksuper来调用夫类的方法。
+  Elephant.addMethods({   
+    speak: function(Ksuper) {     
+        Ksuper();     //Ksuper= Animal.speak
+        alert("我覆盖了原来父类中的speak，但可以用Ksuper()找回原来的方法");   
+    } 
+   }); 
+   Elephantlady.speak(); 
+</textarea>
+</div>
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i></i>对比以工厂模式创建对象添加方法的方式</p>
+      </div>
+<textarea name="code" class="js" id="Textarea1">
+function Animal(name,sound){
+    this.name=name;
+    this.sound=sound;
+}
+Animal.prototype={
+    speak:function(){
+        alert(this.name + " says: " + this.sound + "!");  
+    }
+}
+var Elephant=function(name,sound){
+    this.superClass=Animal;
+    this.superClass(name,sound);  
+}
+Elephant.prototype=new Animal();
+var Elephantlady = new Elephant("Elephantlady", "hissssssss"); 
+Elephantlady.speak();
+Elephant.prototype.speak=function(){
+    Animal.prototype.speak.call(this,this.name,this.sound);
+        alert("我覆盖了原来父类中的speak，但可以用Ksuper()找回原来的方法");  
+}
+
+Elephantlady.speak();  
+
+</textarea>
+      <div class="qbar mt10">
+       	<p><i>1.</i>当您学会使用addMethod和Ksuper，你就不会在纠结于大量使用call和众多的继承对象的方法了</p>
+    </div>
+      <div class="qbar mt10">
+	    <p><i>2.</i>代码可读性，可理解性增强,便于维护和协作开发</p>
+    </div>
+
+
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

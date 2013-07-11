@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>欢迎使用Koala</h2>
+    </div>
+  </div>    
+  <div class="crumbs">
+    <a href="javascript:void(0)">首页</a><i>&gt;</i><span>K</span>
+  </div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K(obj|func)发大水法撒旦发射点发
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+    
+      <textarea name="code" class="js" id="code">
+        id节点快速选择器,
+        函数加载器
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>obj</b>
+                    </td>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        ID对象
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>obj</b>
+                    </td>
+                    <td>
+                        null
+                    </td>
+                    <td>
+                        为空
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>func</b>
+                    </td>
+                    <td>
+                        function
+                    </td>
+                    <td>
+                        函数执行
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Kdom
+                    </td>
+                    <td>
+                       返回以ID为选择Kdom对象
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Kdom
+                    </td>
+                    <td>
+                       以document.body为选择的Kdom链
+                    </td>
+               </tr>
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i>K()作为快速ID选择器的使用</p>
+      </div>
+<textarea class="html code code_html" style="height:140px; ">
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<div id="d1">节点,链式调用变成红色</div>
+<script type="text/javascript">
+    var d1 = K("d1").css("color", "red").addClassName("d1");
+    alert(d1.node); // 
+    
+    alert(K().node); //
+</script>
+
+
+</textarea>
+
+<br />
+      <div class="qbar mt10">
+      	<p><i>2.</i>K()作为函数加载器使用</p>
+      </div>
+<textarea name="code" class="js" id="Textarea2">
+<p>
+    三种方法K绑定全局window事件示例
+</p>
+<script type="text/javascript">
+    K(window).bind('load', function () { 
+        alert("honey Koala");
+    })
+    //或者
+    K().bind('load', function () { 
+        alert("honey Koala")
+    })
+    //或者
+    K(function () { 
+        alert("honey Koala")
+    })
+</script>
+
+
+</textarea>       
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+
+<textarea name="code" class="js" id="Textarea1">
+ K(#id)作为ID的快速选择器，大多数下处理单元素id节点的选择并级联方法的情况,
+ 作为函数加载器使用，可以快速绑定页面的事件
+
+
+</textarea>
+
+
+
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

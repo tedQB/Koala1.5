@@ -1,0 +1,191 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   
+</head>
+<body>
+<script type="text/javascript" src="KoalaP.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/news/js/Qfast.js">
+</script>
+<script type="text/javascript" src="ajaxplus.js"></script>
+<link href="http://news.qq.com/base2011/css/qq.css" rel="stylesheet" type="text/css">  
+<style type="text/css">
+.focus{ width:400px; position:relative}
+.focus .tab{ overflow:hidden; zoom:1; height:27px; }
+.focus .tab li{ float:left; width:110px; height:27px;  line-height:27px; font-size:14px;  text-align:center; margin-right:5px; cursor:pointer; border:1px solid #000;  }
+.focus .tab li.current{ font-weight:bolder;}
+.focus .con{ border:1px solid #000; height:300px; width:398px; overflow:hidden;  }
+#Dynlink{ position:absolute; top:5px; right:60px; }
+</style>
+    <div class="focus" id="focus">
+        <ul class="tab" id="tab">
+            <li><a href="#" target="_blank">页卡1</a></li>
+            <li><a href="#" target="_blank">页卡2</a></li>
+        </ul>
+        <div id="con">
+            <div class="con">
+                内容1
+            </div>
+            <div class="con" style="display:none">
+                内容2
+            </div>
+        </div>
+     </div>
+
+    <div id="divStatus">
+    </div>
+<script type="text/javascript">
+    Qfast.add('tabs', { path: 'http://mat1.gtimg.com/news/js/tabs.js', type: 'js' });
+</script>    
+<script type="text/javascript">
+    (function () {
+        var ipplace = {
+            '泸州市': 'lala/luzhou.html',
+            '绵阳市': 'lala/mianyang.html',
+            '南充市': 'lala/nanchong.html',
+            '北京市': 'lala/beijing.html'
+        };
+        //        simplexhr = {
+        //            doxhr: function (container, url) {
+        //                if (!document.getElementById || !document.createTextNode) { return; }
+        //                simplexhr.outputContainer = document.getElementById(container);
+        //                if (!simplexhr.outputContainer) { return; }
+        //                var request;
+        //                try {
+        //                    request = new XMLHttpRequest();
+        //                } catch (error) {
+        //                    try {
+        //                        request = new ActiveXObject("Microsoft.XMLHTTP");
+        //                    } catch (error) {
+        //                        return true;
+        //                    }
+        //                }
+        //                request.open('get', url, true);
+        //                request.setRequestHeader('My-Special-Header', 'AjaxRequest');
+        //                request.setRequestHeader('Sent-By', 'boqiu');
+        //                request.onreadystatechange = function () {
+        //                    if (request.readyState == 1) {
+        //                        simplexhr.outputContainer.innerHTML = 'loading...';
+        //                    }
+        //                    if (request.readyState == 4) {
+        //                        if (request.status && /200|304/.test(request.status)) {
+        //                            simplexhr.retrieved(request);
+        //                        } else {
+        //                            simplexhr.failed(request);
+        //                        }
+        //                    }
+        //                }
+        //                request.setRequestHeader('If-Modified-Since', 'Wed, 05 Apr 2006 00:00:00 GMT');
+        //                request.send(null);
+        //                return false;
+        //            },
+        //            retrieved: function (requester) {
+        //                var data = requester.responseText;
+        //                simplexhr.outputContainer.innerHTML = data;
+        //                return false;
+        //            },
+        //            failed: function (requester) {
+        //                alert('The XMLHttpRequest failed. Status: ' + requester.status);
+        //                //throw new Error('The XMLHttpRequest failed. Status: ' + requester.status);
+        //                return true;
+        //            }
+        //        };
+        var tool = function (p) {
+            var _self = this;
+            this.load(this.ip, function () {
+                var cityName = IPData[2].replace("市", "");
+                if (!ipplace[IPData[2]]) {
+                    K('focus').insert({
+                        //无ip地址匹配的时候，配置链接地址链接，名称
+                        top: '<a href="#" id="Dynlink">无IP数据显示</a>'
+                    })
+                    Qfast(false, 'tabs', function () { tabs({ tabId: 'tab', conId: 'con', conCn: 'con', current: 0, eType: 'mouseover' }) });
+                }
+                else {
+                    K("tab").insert({
+                        bottom: '<li id="iptest"><a href="#" target="_blank"></a></li>'
+                    });
+                    K('con').insert({
+                        bottom: '<div class="con" id="ipredirect" style="display:none"></div>'
+                    })
+                    Qfast(false, 'tabs', function () { tabs({ tabId: 'tab', conId: 'con', conCn: 'con', current: 0, eType: 'mouseover' }) });
+                    var redirect = K(p.cit).node.getElementsByTagName("a")[0];
+                    redirect.setAttribute("href", ipplace[IPData[2]])
+                    redirect.innerHTML = cityName;
+
+                    K.ajax({
+                        method: 'get',
+                        parameters: 'section=blog&id=45',
+                        requestHeader: ["author", "boqiu", "frame", "Koala"],
+                        contentType: 'text/html',
+
+                        url: ipplace[IPData[2]],
+                        loadListener: function () {
+                           log("load");
+                        },
+                        htmlResponseListener: function (content) {
+                            K("ipredirect").html(content);
+                        },
+                        completeListener:function(){
+                            log("complete")
+                        },
+                        errorListener:function(){ 
+                            log("error")
+                        }
+                    })
+
+                }
+            })
+        }
+        tool.prototype = {
+            ip: 'http://fw.qq.com:80/ipaddress',
+            load: function (file, callback) {
+                try {
+                    var script = document.createElement('script');
+                    script.src = file + "?" + Math.random();
+                    script.type = "text/javascript";
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                    if (script.addEventListener) {
+                        script.addEventListener("load", callback, false);
+                    } else if (script.attachEvent) {
+                        script.attachEvent("onreadystatechange", function () {
+                            if (script.readyState == 4
+								|| script.readyState == 'complete' || script.readyState == 'loaded') {
+                                callback();
+                            }
+                        });
+                    }
+                } catch (e) {
+                    callback();
+                }
+            },
+            check: function (item, arr) {
+                for (var i = 0; i < arr.length; i++) {
+                    if (arr[i] == item) {
+                        return arr[i];
+                    }
+                    return item;
+                }
+            },
+            checkIndex: function (i, a) {
+                if (a[i]) {
+                    return true;
+                }
+                return false;
+            }
+        }
+        new tool({ cit: 'iptest' })
+    })();
+</script>
+<?php
+	if(isset($_SERVER['HTTP_MY_SPECIAL_HEADER'])){
+	
+	}else{
+	
+	}
+	if(isset($_SERVER['HTTP_MY_AJAX_REQUEST'])){
+		header('My-Ajax-Response: '.$_SERVER['HTTP_MY_AJAX_REQUEST']);
+		echo 'Hello';
+	}
+?>
+</body>
+</html>

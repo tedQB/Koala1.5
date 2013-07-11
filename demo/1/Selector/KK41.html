@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">选择器</a><i>&gt;</i><a href="javascript:void(0)">sizzle选择器</a><i>&gt;</i><span>KK(':nth-child(index/even/odd/equation)')</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+KK(':nth-child(index/even/odd/equation)')
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+<textarea name="code" class="js" id="code">
+选择其父元素下的第N个子或奇偶元素。</textarea>    
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p> 使用KK(':nth-child(index/even/odd/equation)')返回示例</p>
+      </div>
+      
+<textarea class="html code code_html" style="height:615px; ">
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+ <style>
+  div { float:left; }
+  span { color:blue; }
+  </style>
+</head>
+<body>
+    <div>
+      <ul>
+        <li>John</li>
+        <li>Karl</li><!--"ul li:nth-child(2)" 被选中-->
+        <li>Brandon</li>
+      </ul>
+    </div>
+    <div>
+        <ul>
+            <li>Sam</li>
+        </ul>
+    </div>
+  <div>
+    <ul>
+        <li>Glen</li>
+        <li>Tane</li><!--"ul li:nth-child(2)" 被选中-->
+        <li>Ralph</li>
+        <li>David</li>
+    </ul>
+  </div>
+<script>
+    window.onload = function () {
+        KK("ul li:nth-child(2)").append("<span> - 2nd!</span>");
+        //please try even/odd, you'll find more。。
+    }
+</script>
+
+
+</body>
+</html>
+
+
+</textarea>
+<br />
+
+
+
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <textarea name="code" class="js" id="code">
+      因为Koala的实现:nth-child(n)是严格来自CSS规范，n值是“1索引”，也就是说，从1开始计数。对于所有其他选择器表达式，但是，Koala遵循JavaScript的“0索引”的计数。因此，给定一个单一<ul>包含两个<li>， KK('li:nth-child(1)')选择第一个<li>，而KK('li:eq(1)')选择第二个。
+      所以，:nth-child(n)伪类很容易跟:eq(n)混淆，即使两个可能导致完全不同的匹配的元素。用:nth-child(n) ，所有子元素都计算在内，不管它们是什么，并且指定的元素被选中仅匹配连接到伪类选择器。而:eq(n)只有类选择附加到伪类计算在内，不限于任何其他元素的孩子，而且第（n +1）个一（n是基于0）被选中。
+      </textarea>
+
+      
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

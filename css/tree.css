@@ -1,0 +1,107 @@
+a{text-decoration:none;
+blr:expression(this.onFocus=this.blur()); /* IE Opera去掉点击链接时的虚线外框 */
+outline:none; /* FF Opera去掉点击链接时的虚线外框 */
+}
+area {blr:expression(this.onFocus=this.blur()); } /* 图片热点去掉点击链接时的虚线外框 */
+a:focus{-moz-outline-style: none; /* FF去掉点击链接时的虚线外框 */}
+
+em { font-style:normal }
+
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: #D3DFD1;
+	margin-top: 0px;
+}
+
+.treeview .hitarea {
+	background: url(../img/treeview-default.gif) -64px -23px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .hover { cursor: pointer; background:#9396db; color:#fff; text-decoration:none; }
+
+.treeview li { background: url(../img/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -1px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(../img/treeview-default.gif); }  
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.treeview-red li { background-image: url(../img/treeview-red-line.gif); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(../img/treeview-red.gif); } 
+
+.treeview-black li { background-image: url(../img/treeview-black-line.gif); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(../img/treeview-black.gif); }  
+
+.treeview-gray li { background-image: url(../img/treeview-gray-line.gif); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(../img/treeview-gray.gif); } 
+
+.treeview-famfamfam li { background-image: url(../img/treeview-famfamfam-line.gif); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(../img/treeview-famfamfam.gif); } 
+
+.treeview .placeholder {
+	background: url(../img/ajax-loader.gif) 0 0 no-repeat;
+	height: 16px;
+	width: 16px;
+	display: block;
+}
+.filetree li { padding: 3px 0 2px 16px; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 18px; display: block; }
+.filetree span.folder { background: url(../img/folder.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(../img/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(../img/file.gif) 0 2px no-repeat; }
+.sidebar { width:100%; height: 100%;background:#D3DFD1; border-top: none;}
+.sideHead { height:28px; line-height:28px; background:#B9C9BB url(cat.gif) no-repeat 10px 50%;/*background:#bec2c5 url(cat.gif) no-repeat 10px 50%;*/ }
+.sideHead strong { padding-left:30px; line-height:28px; color:#60706A; text-shadow:0 1px 0 rgba(255, 255, 255, 0.6); font-family:Verdana, Geneva, sans-serif }
+.navTree { width:100%; height: 100%; overflow-x:hidden; overflow-y:auto; padding-left:10px; }
+.navTree a { color:#337; }
+.navTree li { font-family:微软雅黑; }
+.navTree li span.folder { color:#4C645E; }
+body { background:#CCD9C8; height:100%; width:100%;}
+.down {
+	width: 139px;
+	padding: 20px 5px 20px 26px;
+	text-align: center;
+	text-align: left;
+}
+.down a {
+background: url(../img/down.gif) no-repeat left 3px;
+padding-left: 20px;
+font-family: 微软雅黑;
+font-size: 14px;
+font-weight: 700;
+}
+#resultout li{ 
+	line-height:30px;padding-left:18px;
+	background:none;
+}

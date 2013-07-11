@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+    <style type="text/css">
+        .nf{ font-size:14px; text-indent:2em;}
+    </style>
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">常用插件</a><i>&gt;</i><span>K.fx</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K(obj).fx().hide();
+K(obj).fx().show();
+K(obj).fx().fadeOut();
+K(obj).fx().fadeIn();
+K(obj).fx().slideDown();
+K(obj).fx().slideUp();
+K(obj).fx().slideToggle();
+K(obj).fx().showToggle();
+K(obj).fx().fadeToggle();
+K(obj).fx().go(args1,args2,args3);
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+       一个动画插件，可以使用该插件实现绚丽的动画效果，内置缓动公式，发挥你的想象吧!
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   名称
+                   </th>
+                   <th>
+                   参数
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+			    <tr>
+                    <td>
+                        <b>go(自定义动画，类似jquery中的animate)</b> 
+                    </td>
+                    <td>
+                      <b>args1:任意符合js方式的样式改写{fontSize:"22px",color:"#f00",paddingTop:"100px"}(必选参数)</b><br>
+					  args2:缓动速度[slow/fast/defaults/任意毫秒数](可选)<br>
+					  args3:自选缓动方式:[linear/easeIn/easeOut/easeBoth/...参考<a href="http://archive.cnblogs.com/a/1851274/" target="_blank">js中的缓动公式</a>](可选)
+                    </td>
+                    <td>
+                        自定义需要动起来的元素，支持回调函数
+                    </td>
+               </tr>
+			   <tr>
+                    <td>
+                        <b>hide</b> 
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        采用动画方式隐藏元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>hide</b> 
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        采用动画方式隐藏元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>show</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        采用动画方式显示元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>fadeOut</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        改写元素透明度，淡出显示元素
+                    </td>
+               </tr>
+                  <tr>
+                    <td>
+                        <b>fadeIn</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        改写元素透明度，淡入显示元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>slideDown</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        从上向下滑动显示元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>slideUp</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        从下向上滑动显示元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>slideToggle</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        从下向上(从上向下)滑动显示元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>showToggle</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        显示(隐藏)元素
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>fadeToggle</b>
+                    </td>
+                    <td>
+                       slow/fast/defaults/任意毫秒数(可选)
+                    </td>
+                    <td>
+                        淡入(淡出)元素
+                    </td>
+               </tr>
+			    <tr>
+                    <td>
+                        <b>delay</b>
+                    </td>
+                    <td>
+                       任意毫秒数(可选)
+                    </td>
+                    <td>
+                       延迟多少毫秒再执行下一个动画
+                    </td>
+               </tr>
+                
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 使用K.fx示例</p>
+      </div>
+<textarea class="js code code_js">
+K('test1').fx().hide('slow');//缓慢隐藏test1元素
+K('test1').fx().show('fast');//快速显示test1元素
+K('test1').fx().hide().delay(1000).show('fast');//默认速度隐藏test1后，等待1秒再迅速将其显示
+K('test1').fx().fadeOut(1000);//频率1s淡出隐藏test1元素
+K('test1').fx().fadeIn(5000);//频率5s淡入显示test1元素
+K('test1').fx().slideDown('slow');//让test1元素缓慢滑动显示
+K('test1').fx().slideUp('slow');//让test1元素缓慢滑动隐藏
+K('test1').fx().slideToggle('slow');//如果test1元素为隐藏状态则slideDown,否则slideUp
+K('test1').fx().showToggle('slow');//如果test1元素为隐藏状态则show,否则hide
+K('test1').fx().fadeToggle('slow');//如果test1元素为隐藏状态则fadeIn,否则fadeOut
+K('test1').fx().go({marginLeft:'150px'},'slow','bounce').delay(800).go({marginTop:'100px'},'slow','bounce',function(){alert('end!')});//test1元素以弹性公式缓慢向右移动150px，然后暂停800毫秒，接着向下运动100px,完成后弹出end！
+</textarea>
+
+        <p class="nf">
+ 示例地址：<a href="Kfx/fxDemo.htm" target="_blank">demo/1/plus/Kfx/fxDemo.htm</a>       
+        </p>
+		<p class="nf">
+ 示例地址：<a href="Kfx/fxFocus.htm" target="_blank">demo/1/plus/Kfx/fxFocus.htm</a>       
+        </p>
+        <p class="nf">
+下载地址：<a href="Kfx/Kfx.7z" target="_blank">Kfx</a>       
+        </p>
+
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+	  go方法为自定义函数，支持各种动画缓动，包括fontSize/paddingTop/paddingBottom....等，可以结合delay方法制作绚丽的动画
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>plus author <span class="author">tomiezhang</span> complete time:2011.12.8 </p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+    addOnLoad(function () {
+        dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+        dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+        dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+        dp.SyntaxHighlighter.HighlightAll("code");
+    });
+	</script>
+</body>
+</html>

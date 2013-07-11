@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+    <style type="text/css">
+        .logo{ float:left; margin-right:1px; }
+        .cItemInner{ overflow:hidden; zoom:1; }
+        .f14{ font-size:14px; text-indent:2em; }
+    </style>
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>
+          <span></span>欢迎使用Koala</h2>
+    </div>
+  </div>    
+  <div class="crumbs">
+    <a href="javascript:void(0)">开始</a><i>&gt;</i><span>Koala</span>
+  </div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+        
+          <img src="../../../1.png" alt="Alternate Text" width="100" height="100" class="logo"/>   
+        
+          <p class="f14">
+            Koala是一个便捷，轻巧的新型面向对象的javascript框架，综合各种主流框架的特点，支持级联代码，面向对象，传统方式的代码风格，底层代码简单易懂，可扩展，可移植性性强，可以快速的构建简单的页面交互组件，使构建的组件代码适合在各种团队内分发协作。
+
+          </p>
+          <p class="f14">
+            如果您是一位JSer，或者想成为一名JSer，Koala会辅助您快速上手JS，减少诸多重复而枯燥的原生方法调用，从而专注于程序应用逻辑的实现，使得代码更加的健壮。另外如果您被各种"$"符号搞的晕头转向的时候，那就尝试一下Koala吧！
+          </p>
+      
+      
+              
+      </div>
+    </div>
+	<div class="tItem">
+      <div class="tItemInner">
+        <h3>框架地址</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner sp1">
+	<p class="f14"  style=" margin:0px 0 10px ">开发版</p>  	
+<textarea name="code" class="js">
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.dev.1.5.js"></script>
+
+</textarea>			      
+	<p class="f14" style=" margin:10px 0 10px ">Min版</p>  
+<textarea name="code" class="js">
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+</textarea>		
+	<p class="f14" style=" margin:10px 0 10px ">页面片include地址</p>  
+<textarea name="code" class="js">
+<!--#include virtual="/public/koala.htm"-->
+</textarea>		      
+<br />
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更新日志</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+
+<textarea name="code" class="js" id="Textarea7">
+2011年11月17日 Koala1.0正式版发布
+    1.修正loose.dtd下事件绑定的问题
+    2.增加了K.A.each返回方法，K/KK.select, K/KK.getBy,K.getByTagName方法。
+    3.文档样式相关增加了css操作，getStyle，setStyle操作,增加了Kdom属性，Kdoms属性的文档片
+    4.优化了sizzle选择器的文档
+    5.优化文档的查看体验
+2011年12月2日 Koala插件机制完成
+    1.实现了插件功能，并完成插件开发规范文档
+    2.更改了insert方法的使用
+    3.增加了Hash对象和迭代Enumerable对象
+    4.增加了K.String的include包含方法，toQueryParams方法
+    5.优化了快速选择符K的效率，
+    6.调整了K.A.each方法的返回值
+    7.编写了插件K.ajax并完成对应文档
+    8.修正了page.x,page.y,client.x,client.y文档
+12月8日 
+	修正了K/KK().append方法的使用
+2012年1月4日
+	1.增加了文档搜索API的功能
+	2.添加了width,height,pageX,pageY,parentX,parentY,html,attr功能和对应文档
+	3.修正个个别api名称过长的问题
+2012年8月27日 发布1.4.1版本
+	1.完成Qfast与Koala整合
+	2.添加顶层窗口K().scrollTop()和K().scrollLeft()的方法
+	3.添加顶层窗口鼠标滚轮:K().bind('mousewheel',function(){}),拖动滚动条的事件:K().bind('scroll',function(){})
+	4.分发了发布系统公共页面片以供使用
+	5.简化了KK多节点到单节点的节点转化形式,解释，若KK(selector)选择为一个节点，则自动转化为单节点kwdom，代替以往KK(selector).item(0)
+	5.修正了部分文档bug
+2012年11月28日 发布1.5版本
+    1.修正IE下调用浏览器私有api console.log出现alert弹层问题
+	2.增加parentWrap,childWrap两个新api
+	3.增加了选择器选择不到页面节点不会报错的功能，应对编辑手动删除HTML,没有删除js的情况
+	4.增加K.debug(1)函数，可精确定位选择器错误。解决bug定位问题
+	5.增加选择器HTML属性，可方便的查看到选择到的HTML节点信息
+	6.修整了若干文档bug
+	
+		1.6版本计划:Koala离子CMD模块化
+	
+	
+</textarea>
+  </div>
+</div>
+	
+	
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>快速入门</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+      <div class="qbar mt10">
+<p style="font-size:14px">Koala以K，KK为入口，在文档中进行对节点的遍历和操作，<br /><br /></p>
+    <p class="f14">首先，K作为框架提供的一个快速的页面ID选择器入口，您可以针对页面中如&lt;div id="d1"&gt;content&lt;/div&gt; 进行K("d1")的操作，也可以作为函数加载器进行组件代码载入。    
+  </p>
+<p class="f14">其次，KK作为多元素选择符，可以选择页面的您可以针对页面中诸多如&lt;div class="class"&gt;content&lt;/div&gt; 进行K(".class")的选择并附加方法操作。
+        <br />
+        <br />
+        以下为示例：
+  </p>
+    
+      </div>
+       
+      <div class="qbar mt10">
+      	<p><i>1.</i>函数加载器 K 比较 window.onload </p>
+      </div>
+<textarea name="code" class="js" id="Textarea3">
+<script type="text/javascript">
+    如果您还在使用
+    window.onload = function () { alert("old onload") } 
+    或者
+    addEvent(window,'load',function(){ alert( "old onload") })
+
+    那试一试这个   
+        K(function(){ 
+            alert('Koala onload')
+        })
+</script>
+
+
+</textarea>
+      <div class="qbar mt10">
+      	<p><i>2. </i>ID选择符　K("elem") 比较 document.getElementById("elem") </p>
+      </div>
+<textarea name="code" class="js" id="Textarea4">
+<script type="text/javascript">
+    var $ = function (elem) { return document.getElementById(elem) };     $("elem") 
+    用下面单元素选择符K可以替代
+    K("elem")
+</script>
+
+
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>3. </i> 多元素选择符  KK("selector")比较document.getElementsByTagName("selector")</p>
+      </div>
+<textarea name="code" class="js" id="Textarea2">
+<script type="text/javascript">
+    KK("span") 选取所有页面中的span元素
+    KK(".class1") 选取页面中所有节点class名称为class1的元素
+    KK("#test") 选择页面中节点ID为test
+    KK("#test" ".class1") 选择页面中节点ID为test和节点class名称为class1的元素。
+</script>
+
+</textarea>       
+      
+      <div class="qbar mt10">
+      	<p><i>4. </i>支持链式方法调用</p>
+      </div>
+<textarea name="code" class="js" id="Textarea5">
+<script type="text/javascript">
+    K('appendtest1').addClassName("aaa").removeClassName("aaa");   
+    KK("span").addClassName("enen").append("LA")
+</script>
+
+</textarea>       
+      <div class="qbar mt10">
+      	<p><i>5. </i>支持面向对象的编程模式</p>
+      </div>
+<textarea name="code" class="js" id="Textarea6">
+<script type="text/javascript">
+    var Animal = K.fn.create({
+        init: function (name, sound) {
+            this.name = name;
+            this.sound = sound;
+        },
+        speak: function () {
+            alert(this.name + " says: " + this.sound + "!");
+        }
+    });
+
+    var Elephant = new Animal("Elephant", 'nnnnnnn');
+    Elephant.speak();
+
+    // 继承父对象Animal,创建一个Snake对象 
+    var Snake = K.fn.create(Animal, {
+        init: function (Ksuper, name) {
+            Ksuper(name, '丝丝丝丝');   //调用夫类的initialize方法初始化参数
+        }
+    });
+    var ringneck = new Snake("眼镜蛇");
+    ringneck.speak(); 
+</script>
+
+</textarea>       
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+
+<textarea name="code" class="js" id="Textarea1">
+框架仍处在发展阶段，倾听各种意见和建议，期望与您共同学习和提高。文档示例运行在IE若有问题，刷新即可,推荐使用非IE浏览器查看文档
+rtx:boqiu
+mail:boqiu@tencent.com 
+
+</textarea>
+
+
+
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Koala-fx demo</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<style>
+*{margin:0;padding:0;}
+body {background:#272727;margin:0 auto;padding:0px;}
+#foucs {width:622px;height:500px;position:absolute;left:30%;top:20%;background:#fff;text-align:center;}
+#foucs .innerTop {width:602px;height:400px;margin:10px auto 0 auto;background:#272727;}
+#foucs .innerTop .img {width:600px;height:400px;text-align:center;position:relative;}
+#foucs .innerTop .img img{width:600px;height:400px;position:absolute;left:0;top:0;}
+#foucs .innerBottom {width:600px;height:80px;margin:0 auto;margin-top:5px;}
+#foucs .innerBottom .runwrap {width:600px;height:30px;text-align:left;margin:0 auto;font-size:12px;line-height:30px;overflow:hidden;margin:10px 0;position:relative}
+#foucs .innerBottom .runwrap h1 {font-size:18px;font-family:"微软雅黑"}
+#foucs .innerBottom .runwrap #focus_pre_txt {position:absolute;left:0px;top:0px;}
+#foucs .innerBottom .btn {float:left;text-align:left;margin:0;padding:0}
+#foucs .innerBottom .btn li {width:8px;height:8px;line-height:8px;background:#000;list-style:none;float:left;margin-left:5px;display:inline;text-indent:-999px;cursor:pointer}
+#foucs .innerBottom .btn .s {background:#FF0099}
+</style>
+</HEAD>
+
+<BODY>
+<div id="foucs">
+	<div class="innerTop">
+		<div class="img" id="focusShow"><img src="aset/1.jpg" id="focus_pre"/></div>
+	</div>
+	<div class="innerBottom">
+		<div class="runwrap" ><div id="focus_pre_txt"></div></div>
+		<ul class="btn" id="focus_pre_btn"></ul>
+	</div>
+</div>
+<script src="http://mat1.gtimg.com/joke/Koala/Koala-min.js"></script>
+<script src="plus_fx_min.js"></script>
+<script>
+var flip = K.fn.create({
+	time:0,
+	timer:null,
+	init:function(JSON){
+		var _self = this;
+		K.A.each(JSON,function(obj,n){
+			if(n=="Bimg"){
+				_self.bigImg = obj;
+			}else if(n=="id"){
+				_self.id = K(obj);
+			}else if(n=="time"){
+				_self.myTime = obj;
+			}else if(n=="btnId"){
+				_self.Btn = K(obj);
+			}else if(n=="txt"){
+				_self.txt = obj;
+			}else if(n=="txtId"){
+				_self.txtId = K(obj);
+			}
+		});
+		this.preload(this.bigImg);
+		this.go(this.id);
+	},
+	preload:function(arr){
+		var _self = this;
+		K.A.each(arr,function(obj,i){
+			var _pre = new Image();
+			if(i==0){
+				_self.Btn.append("<li class='s'>.</li>");
+			}else{
+				_self.Btn.append("<li>.</li>");
+			}
+			_self.txtId.append("<h1>"+_self.txt[i]+"</h1>")
+			_pre.src=obj;
+			_self.Btn.child(i).click(function(){
+				_self.push = true;
+				window.clearTimeout(_self.timer);
+				_self.timer =null;
+				_self.time = i;
+				_self.change(_self.id,i);
+			})
+		});
+	},
+	go:function(obj,t){
+		var _self = this;
+		if(_self.push) return;
+		this.timer = window.setTimeout(function(){
+			var t=++_self.time;
+			if(t>=_self.bigImg.length){
+				_self.time = 0;
+				t = 0;
+			}
+			_self.change(obj,t);
+		},_self.myTime)
+
+	},
+	change:function(obj,t){
+		var _self = this;
+		K(obj).fx().go({height:"0px",top:"200px"},240,'easeOutExpo',function(){
+			obj.attr("src",_self.bigImg[t]);
+			K.A.each(_self.bigImg,function(obj,i){
+				_self.Btn.child(i).removeClassName("s");
+			})
+			_self.Btn.child(t).toggleClassName("s");
+			if(t==0){
+				K(_self.txtId).fx().go({top:"0px"},'slow','linear')
+			}else{
+				K(_self.txtId).fx().go({top:"-"+30*t+"px"},'slow','bounce')
+			}
+			_self.push = false;
+			K(obj).fx().go({height:"400px",top:"0px"},240,'easeOutExpo',function(){
+				  _self.go(obj);
+			})
+		});
+	}
+});
+var JSON = {"Bimg":['aset/1.jpg','aset/2.jpg','aset/3.jpg','aset/4.jpg','aset/5.jpg'],"txt":['考拉FX是一个用来书写动画的插件','它依赖于考拉脚本库','它会向考拉的扩展方法下注册一个FX方法','目前它支持元素的位置和色彩运算','内置了FLASH中的缓动算法'],"id":"focus_pre","txtId":"focus_pre_txt","btnId":"focus_pre_btn","time":3000}
+new flip(JSON);
+window.onload = function(){
+	return function(){
+		K("foucs").fx().go({left:"60px",top:"60px"},'slow','easeBothStrong');
+		return function(){
+			K("foucs").fx().go({left:"300px",top:"200px"},'slow','bounce');
+		}.Kdelay(7)
+	}.Kdelay(4)
+}
+</script>
+</BODY>
+</HTML>

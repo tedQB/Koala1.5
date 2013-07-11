@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Koala.fx</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<style>
+.mod {width:400px;height:400px;background:#f00}
+</style>
+</HEAD>
+
+<BODY>
+<script src="http://mat1.gtimg.com/joke/Koala/Koala-min.js"></script>
+<script src="plus_fx_min.js"></script>
+<div id="test1" class="mod"></div>
+<button>hide</button><button>show</button><button>fadeOut</button><button>fadeIn</button><button>slideDown</button><button>slideUp</button><button>slideToggle</button><button>showToggle</button><button>fadeToggle</button><button>自定义</button>
+<script>
+var t = document.getElementsByTagName('button');
+var hand = {
+	'hide':Function("K('test1').fx().hide('slow')"),
+	'show':Function("K('test1').fx().show('slow')"),
+	'fadeOut':Function("K('test1').fx().fadeOut('slow')"),
+	'fadeIn':Function("K('test1').fx().fadeIn('slow')"),
+	'slideDown':Function("K('test1').fx().slideDown('slow')"),
+	'slideUp':Function("K('test1').fx().slideUp('slow')"),
+	'slideToggle':Function("K('test1').fx().slideToggle('slow')"),
+	'showToggle':Function("K('test1').fx().showToggle('slow')"),
+	'fadeToggle':Function("K('test1').fx().fadeToggle('slow')"),
+	'自定义':Function("K('test1').fx().go({marginLeft:'150px'},'slow','bounce').delay(800).go({marginTop:'100px'},'slow','bounce').go({backgroundColor:'#00f'},'slow','bounce',function(){K('test1').html('look!!!')}).go({fontSize:'80px',color:'#fff'},'slow','bounce').delay(300).go({marginLeft:'0px',marginTop:'0px',backgroundColor:'#f00',fontSize:'12px'},'fast','bounce')")
+
+}
+for(var i=0;i<t.length;i++){
+	(function(f){
+		t[f].onclick = function(){
+			hand[this.innerHTML]();
+		}
+	})(i)
+}
+</script>
+</BODY>
+</HTML>

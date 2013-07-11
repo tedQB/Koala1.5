@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>OA帮助首页</title>
+    <script language="javascript">
+        //写了一个Request["Parms"]获取参数小脚本,关键一
+        var Request = new Array();
+        function InitData() {
+            var s = window.location.href;
+            var n = s.indexOf("?");
+            if (n >= 0)
+                s = s.substring(n + 1);
+            var valuelist = s.split("&");
+            for (var i = 0; i < valuelist.length; i++) {
+                var pair = valuelist[i].split("=");
+                if (pair.length > 1) {
+                    Request[pair[0]] = pair[1];
+                }
+            }
+        }
+        function getID() {
+            InitData();
+            parent.leftFrame.document.location.href = "Navigate_Tree.aspx?HelpID=" + Request["HelpID"] + "&CategoryID=" + Request["CategoryID"]; //该语句为关键语句,大家注意了,关键二
+
+        }
+</script>
+</head>
+    <frameset rows="85,*" frameborder="yes" border="0" framespacing="0" scrolling="NO">
+        <frame src="head.htm" name="topFrame" scrolling="yes" frameborder="yes" noresize>
+        <frameset cols="350,*" border="0" frameborder="yes" framespacing="1" scrolling="NO" onload="getID()">
+            <frame src='#' name="leftFrame" scrolling="NO" src="left.html">
+            <frame id="rightFrame" name="rightFrame" src="right.html">
+        </frameset>
+    </frameset>  
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>Qui导航</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery_tree.js"></script>
+<script type="text/javascript" src="js/zxml.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.4.1.js"></script>
+
+<script src="http://mat1.gtimg.com/joke/js/comm/Qfast.js" type="text/javascript"></script>  
+<script type="text/javascript" src="js/autosuggest.js"></script>
+    <link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/tree.css" />
+</head>
+<body>
+<script type="text/javascript">
+    Qfast.add('common', { path: "http://mat1.gtimg.com/news/base2011/ued_common.js", type: "js" });
+    Qfast.add('tabcard', { path: "http://news.qq.com/base2011/ued_tabcard.js", type: "js", requires: ['common'] });  
+</script>  
+        <script type="text/javascript">
+            K(function () {
+                var oTextbox = new AutoSuggestControl(document.getElementById("apiinput"), new SuggestionProvider());		
+			})
+        </script>
+    <style type="text/css">
+        #cardBtn1{ height:30px; overflow:hidden; zoom:1;background:#4C645E;padding-left:20px; }
+        #cardBtn1 li{ float:left; width:80px;  height:24px; line-height:24px; text-align:center; background:#4C645E; cursor:pointer;margin-top:6px; color:#fff; font-size:14px; margin-right:10px; font-family:"微软雅黑" }
+        #cardBtn1 li.current{ background:#fff; color:#333377;}
+        .navTree,.searchbar{ padding-top:10px;}
+        .searchbar{ }
+        #apiinput{ width:210px; height:20px; padding-left:4px; font-family:"微软雅黑";margin-left:10px;  }
+        #apiinput li a{ color:#000; }
+		#resultout li{ line-height:30px; padding-left:18px; color:#337; font-family:'微软雅黑'; font-size:13px;}
+    </style>
+<div class="sidebar">
+
+<ul id="cardBtn1">  
+    <li class="tabBtn">
+        API目录
+    </li>  
+    <li class="tabBtn">
+        API搜索
+    </li>   
+</ul>  
+
+<div id="cardBody1">  
+    <div class="tabBody">
+	<div class="navTree">
+        <ul class="filetree treeview" id="browser">
+          <li>
+            <span class="folder" id="d1"><a href="demo/1/Selector/begin.html" target="mainFrame">首页 Koala API</a></span>
+            <ul>
+                <li>
+                    <span class="folder">快速使用</span>
+                <ul>
+                <li>
+                    <span class="folder">选择器</span>
+                          <ul>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/K.html" target="mainFrame">K( )</a>
+                                </span>
+                                    <ul>
+                                          <li class="expandable lastExpandable">
+                                                 <span class="folder">Kdom属性</span>
+                                                    <ul style="display:none">
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/DOM/K.node.html" target="mainFrame">K().node</a></span>
+                                                        </li>
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/DOM/K.tag.html" target="mainFrame">K().tag</a></span>
+                                                        </li>
+                                     </ul>
+                                    </li>                               
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KKselector.html" target="mainFrame">KK( )</a></span>
+                                    <ul>
+                                          <li class="expandable lastExpandable">
+                                                 <span class="folder">Kdoms属性方法</span>
+                                                    <ul style="display:none">
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/DOM/KK.len.html" target="mainFrame">KK().length</a></span>
+                                                        </li>
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/DOM/KK.each.html" target="mainFrame">KK().each</a></span>
+                                                        </li>
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/DOM/KK.item.html" target="mainFrame">KK().item</a></span>
+                                                        </li>
+                                     </ul>
+                                    </li>                               
+                                </ul>
+                            </li>
+                <li class="expandable lastExpandable">
+                    <span class="folder">sizzle选择器</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                 <a href="demo/1/Selector/KK.html" target="mainFrame">KK("*")</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK12.html" target="mainFrame">KK('.class')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK30.html" target="mainFrame">KK('#id')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK16.html" target="mainFrame">KK('element')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK37.html" target="mainFrame">KK('selector1, selector2, selectorN')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK14.html" target="mainFrame">KK('ancestor descendant')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK26.html" target="mainFrame">KK('[attribute]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK2.html" target="mainFrame">KK('[attribute|=value]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK3.html" target="mainFrame">KK('[attribute*=value]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK4.html" target="mainFrame">KK('[attribute~=value]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK5.html" target="mainFrame">KK('[attribute$=value]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK6.html" target="mainFrame">KK('[attribute=value]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK7.html" target="mainFrame">KK('[attribute!=value]')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK8.html" target="mainFrame">KK('[attribute^=value]')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK36.html" target="mainFrame">KK('[attributeFilter1][attributeFilter2][attributeFilterN]')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK44.html" target="mainFrame">KK(':parent')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK11.html" target="mainFrame">KK('parent > child')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK38.html" target="mainFrame">KK('prev + next')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK39.html" target="mainFrame">KK('prev ~ siblings')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK24.html" target="mainFrame">KK(':first')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK23.html" target="mainFrame">KK(':first-child')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK33.html" target="mainFrame">KK(':last-child')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK34.html" target="mainFrame">KK(':last')</a></span>
+                            </li>
+
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK43.html" target="mainFrame">KK(':only-child')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK19.html" target="mainFrame">KK(':eq(index)')</a></span>
+                            </li>
+                            
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK25.html" target="mainFrame">KK(':gt(index)')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK35.html" target="mainFrame">KK(':lt(index)')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK20.html" target="mainFrame">KK(':even')</a></span>
+                            </li>
+                                                                                    <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK42.html" target="mainFrame">KK(':odd')</a></span>
+                            </li>       
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK41.html" target="mainFrame">KK(':nth-child(index/even/odd/equation)')</a></span>
+                            </li>
+
+                            <!--
+							<li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK10.html" target="mainFrame">KK(':checkbox')</a></span>
+                            </li>
+							-->
+
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK13.html" target="mainFrame">KK(':contains(text)')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK15.html" target="mainFrame">KK(':disabled')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK17.html" target="mainFrame">KK(':empty')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK18.html" target="mainFrame">KK(':enabled')</a></span>
+                            </li>
+    
+						<!--
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK22.html" target="mainFrame">KK(':focus')</a></span>
+                            </li>
+						-->
+
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK28.html" target="mainFrame">KK(':header')</a></span>
+                            </li>
+
+		
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK40.html" target="mainFrame">KK(':not(selector)')</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK9.html" target="mainFrame">KK(':button')</a></span>
+                            </li>
+                                                                                    <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK31.html" target="mainFrame">KK(':image')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK32.html" target="mainFrame">KK(':input')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK45.html" target="mainFrame">KK(':password')</a></span>
+                            </li>
+							<!--
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK46.html" target="mainFrame">KK(':radio')</a></span>
+                            </li>
+							-->
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK21.html" target="mainFrame">KK(':file')</a></span>
+                            </li>
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK47.html" target="mainFrame">KK(':reset')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK48.html" target="mainFrame">KK(':selected')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK49.html" target="mainFrame">KK(':submit')</a></span>
+                            </li>
+
+                                                        <li>
+                                <span class="file">  
+                                    <a href="demo/1/Selector/KK50.html" target="mainFrame">KK(':text')</a></span>
+                            </li>
+		
+                        </ul>            
+                </li>
+
+                        </ul>            
+                </li>
+
+            </ul>
+                    <ul>
+                        <li class="expandable lastExpandable">
+                            <span class="folder">DOM操作</span>
+                                  <ul>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">事件绑定</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/bind.html" target="mainFrame">K/KK().bind</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/unbind.html" target="mainFrame">K/KK().unbind</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/click.html" target="mainFrame">K/KK().click</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/hover.html" target="mainFrame">K().hover</a></span>
+                                                    </li>
+                                                </ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">查找节点</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/parent.html" target="mainFrame">K/KK().parent</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/sibling.html" target="mainFrame">K/KK().sibling</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/prev.html" target="mainFrame">K/KK().prev</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/next.html" target="mainFrame">K/KK().next</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/child.html" target="mainFrame">K/KK().child</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/first.html" target="mainFrame">K/KK().first</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/last.html" target="mainFrame">K/KK().last</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/find.html" target="mainFrame">K/KK().find</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/getByTagName.html" target="mainFrame">K().getByTagName</a></span>
+                                                    </li>
+
+                                                </ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">文档增删</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/append.html" target="mainFrame">K/KK().append</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/remove.html" target="mainFrame">K/KK().remove</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/empty.html" target="mainFrame">K/KK().empty</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/insert.html" target="mainFrame">K.insert</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/cleanWhitespace.html" target="mainFrame">K/KK().cleanWhitespace</a></span>
+                                                    </li>
+
+                                                </ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">className操作</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/classNames.html" target="mainFrame">K/KK().classNames</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/hasClassName.html" target="mainFrame">K/KK().hasClass</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/addClassName.html" target="mainFrame">K/KK().addClass</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/removeClassName.html" target="mainFrame">K/KK().removeClass</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/toggleClassName.html" target="mainFrame">K/KK().toggleClass</a></span>
+                                                    </li>
+                                                </ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">样式相关</span>
+		<ul style="display:none">
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/css.html" target="mainFrame">K/KK().css</a></span>
+			</li>
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/width.html" target="mainFrame">K().width</a></span>
+			</li>			
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/height.html" target="mainFrame">K().height</a></span>
+			</li>			
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/pageX.html" target="mainFrame">K().pageX</a></span>
+			</li>			
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/pageY.html" target="mainFrame">K().pageY</a></span>
+			</li>			
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/parentX.html" target="mainFrame">K().parentX</a></span>
+			</li>			
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/parentY.html" target="mainFrame">K().parentY</a></span>
+			</li>			
+<!--                                                    <li>
+				 <span class="file">  
+	<a href="demo/1/DOM/getStyle.html" target="mainFrame">K/KK().getStyle</a></span>
+			</li>
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/setStyle.html" target="mainFrame">K/KK().setStyle</a></span>
+			</li>-->
+			<li>
+				 <span class="file">  
+	<a href="demo/1/DOM/opacity.html" target="mainFrame">K/KK().opacity</a></span>
+			</li>
+		</ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">显示隐藏</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/show.html" target="mainFrame">K/KK().show</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/hide.html" target="mainFrame">K/KK().hide</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/toggle.html" target="mainFrame">K/KK().toggle</a></span>
+                                                    </li>
+                                                </ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">浏览器相关</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/scrollLeft.html" target="mainFrame">K/KK().scrollLeft</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/scrollTop.html" target="mainFrame">K/KK().scrollTop</a></span>
+                                                    </li>
+
+                                                </ul>
+                                    </li>
+                                    <li class="expandable lastExpandable">
+                                             <span class="folder">节点属性</span>
+                                                <ul style="display:none">
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/html.html" target="mainFrame">K/KK().html</a></span>
+                                                    </li>
+                                                    <li>
+                                                         <span class="file">  
+                                            <a href="demo/1/DOM/attr.html" target="mainFrame">K/KK().attr</a></span>
+                                                    </li>
+
+                                                </ul>
+                                    </li>
+                                </ul>            
+                        </li>
+
+                    </ul>
+                    <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">事件对象</span>
+                        <ul style="display:none">
+                            <li class="expandable lastExpandable"><span class="folder">事件属性</span>
+                                <ul style="display:none">
+                                    <li><span class="file"><a href="demo/1/Event/pagex.html" target="mainFrame">page.x</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/pagey.html" target="mainFrame">page.y</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/clientx.html" target="mainFrame">client.x</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/clienty.html" target="mainFrame">client.y</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/rightClick.html" target="mainFrame">rightClick</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/type.html" target="mainFrame">type</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/target.html" target="mainFrame">target</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/relatedTarget.html" target="mainFrame">relatedTarget</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/code.html" target="mainFrame">code</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/key.html" target="mainFrame">key</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/shift.html" target="mainFrame">shift</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/control.html" target="mainFrame">control</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/alt.html" target="mainFrame">alt</a></span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>          
+                        <ul style="display:none">
+                            <li class="expandable lastExpandable"><span class="folder">事件方法</span>
+                                <ul style="display:none">
+                                    <li><span class="file"><a href="demo/1/Event/stopPropagation.html" target="mainFrame">stopPropagation</a></span>
+                                    </li>
+                                    <li><span class="file"><a href="demo/1/Event/preventDefault.html" target="mainFrame">preventDefault</a></span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                </li>
+
+            </ul>
+                    <ul>
+                        <li class="expandable lastExpandable">
+                            <span class="folder">客户端代理</span>
+                            <ul style="display:none">
+                                <li class="expandable lastExpandable"><span class="folder">浏览器特性</span>
+                                    <ul style="display: none">
+                                        <li><span class="file"><a href="demo/1/Browser/xpath.html" target="mainFrame">K.B.Features.xpath</a></span>
+                                        </li>
+                                        <li><span class="file"><a href="demo/1/Browser/air.html" target="mainFrame">K.B.Features.air</a></span>
+                                        </li>
+                                        <li><span class="file"><a href="demo/1/Browser/query.html" target="mainFrame">K.B.Features.query</a></span>
+                                        </li>
+                                        <li><span class="file"><a href="demo/1/Browser/json.html" target="mainFrame">K.B.Features.json</a></span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul style="display:none">
+                                <li class="expandable lastExpandable"><span class="folder">检测操作系统</span>
+                                    <ul style="display: none">
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/mac.html" target="mainFrame">K.B.Platform.mac</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/win.html" target="mainFrame">K.B.Platform.win</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/linux.html" target="mainFrame">K.B.Platform.linux</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/android.html" target="mainFrame">K.B.Platform.android</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/ios.html" target="mainFrame">K.B.Platform.ios</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/name.html" target="mainFrame">K.B.Platform.name</a></span>
+                                    </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul style="display:none">
+                                <li class="expandable lastExpandable"><span class="folder">浏览器</span>
+                                    <ul style="display: none">
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/ie.html" target="mainFrame">K.B.ie</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/ie6.html" target="mainFrame">K.B.ie6</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/ie7.html" target="mainFrame">K.B.ie7</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/ie8.html" target="mainFrame">K.B.ie8</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/ie9.html" target="mainFrame">K.B.ie9</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/firefox.html" target="mainFrame">K.B.firefox</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/safari.html" target="mainFrame">K.B.safari</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/chrome.html" target="mainFrame">K.B.chrome</a></span>
+                                    </li>
+        <li>
+                                        <span class="file">  
+                                            <a href="demo/1/Browser/opera.html" target="mainFrame">K.B.opera</a></span>
+                                    </li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+            <ul>
+            	<li>
+                    <span class="folder">高级用法</span>
+            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">
+                        定义类或对象
+                    </span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">
+                                    <a href="demo/1/Class/class.html" target="mainFrame">K.fn.create</a></span>
+                            </li>
+                            <li>
+                                <span class="file">
+                                    <a href="demo/1/Class/addMethod.html" target="mainFrame">addMethods</a></span>
+                            </li>
+                        </ul>            
+
+                </li>
+
+            </ul>
+            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">核心</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Core/K.instanceOf.html" target="mainFrame">K.instanceOf</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Core/Kimplement.html" target="mainFrame">Kimplement</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Core/K.typeOf.html" target="mainFrame">K.typeOf</a></span>
+                            </li>
+                        </ul>            
+                </li>
+
+            </ul>
+            
+            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">自定义类型判断</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isObj.html" target="mainFrame">K.C.isObj</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isDom.html" target="mainFrame">K.C.isDom</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isKdom.html" target="mainFrame">K.C.isKdom</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isKdoms.html" target="mainFrame">K.C.isKdoms</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isElement.html" target="mainFrame">K.C.isElement</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isArray.html" target="mainFrame">K.C.isArray</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isFunction.html" target="mainFrame">K.C.isFunction</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isString.html" target="mainFrame">K.C.isString</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isNumber.html" target="mainFrame">K.C.isNumber</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isDate.html" target="mainFrame">K.C.isDate</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KCheck/K.C.isUndefined.html" target="mainFrame">K.C.isUndefined</a></span>
+                            </li>        
+                        </ul>            
+                </li>
+
+            </ul>
+            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">自定义对象操作</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KObject/K.O.Keys.html" target="mainFrame">K.O.keys</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KObject/K.O.Kextend.html" target="mainFrame">K.O.Kextend</a></span>
+                            </li>
+                        </ul>            
+                </li>
+
+            </ul>
+            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">函数原型扩展方法</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Function/KargNames.html" target="mainFrame">KargNames</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Function/Kbind.html" target="mainFrame">Kbind</a></span>
+                            </li>
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/Function/Kdelay.html" target="mainFrame">Kdelay</a></span>
+                            </li>
+                        </ul>            
+                </li>
+
+            </ul>
+<!--            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">自定义字符串方法</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KArray/K.A.each.html" target="mainFrame">K.A.each</a></span>
+                            </li>
+                        </ul>            
+                </li>
+
+            </ul>-->
+            <ul>
+                <li class="expandable lastExpandable">
+                    <span class="folder">自定义数组方法</span>
+                          <ul style="display:none">
+                            <li>
+                                <span class="file">  
+                                    <a href="demo/1/KArray/K.A.each.html" target="mainFrame">K.A.each</a></span>
+                            </li>
+                        </ul>            
+                </li>
+
+            </ul>
+                </li>
+            </ul>
+              <ul>
+                  <li>
+                        <span class="folder">插件机制</span>
+                      <ul>
+                          <li>
+                            <span class="file">
+                                <a href="demo/1/plus/howto.html" target="mainFrame">如何编写Koala插件</a>
+                            </span>
+                          </li>
+                          <li>
+                            <span class="file">
+                                <a href="demo/1/plus/plustemplate.html" target="mainFrame">插件规范范例<sup class="ico_new_sr"></sup></a>
+                            </span>
+                          </li>                  
+
+                                          <li>
+                                                 <span class="folder">插件编写方法</span>
+                                                    <ul>
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/plus/fn.extend.html" target="mainFrame">K.P.fn.extend</a></span>
+                                                        </li>
+                                                        <li>
+                                                             <span class="file">  
+                                                <a href="demo/1/plus/K.extend.html" target="mainFrame">K.extend</a></span>
+                                                        </li>
+                                     </ul>
+                                    </li>                               
+
+                      </ul>
+                      
+                      
+                  </li>
+                    <style>
+.ico_new_sr{ 
+display: inline-block;
+vertical-align: top;
+margin-top: -3px;
+width: 9px;
+height: 9px;
+background:url("http://mat1.gtimg.com/www/mb/img/v1/b1_120530_2.png") -212px -73px
+}
+</style>
+                <li>
+                    <span class="folder">Koala疑难点解析(新)<sup class="ico_new_sr"></sup></span>
+                    <ul>
+                          <li>
+                            <span class="file">
+                                <a href="demo/1/plus/trouble.html" target="mainFrame">在线答疑</a>
+                            </span>
+                          </li>                     
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="folder">常用插件</span>
+                    <ul style="display:none">
+                          <li>
+                            <span class="file">
+                                <a href="demo/1/plus/K.ajax.html" target="mainFrame">K.ajax插件</a>
+                            </span>
+                          </li>
+						  <li>
+                            <span class="file">
+                                <a href="demo/1/plus/K.fx.html" target="mainFrame">K.fx插件</a>
+                            </span>
+                          </li>                        
+                    </ul>
+                  </li>
+
+              </ul>
+          </li>
+
+        </ul>
+      <div class="down"> 
+	   <a href="http://mat1.gtimg.com/www/js/Koala/Koala.dev.1.5.js" target="_blank"><span>下载Koala开发版</span></a>
+		<a href="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js" target="_blank"><span>下载Koala-min</span></a>
+	  </div>
+ </div>        
+    </div>  
+    <div class="tabBody">
+        <div class="searchbar">
+            <input type="text" id="apiinput" name="name" autocomplete="off" />
+            <ul id="resultout">
+            	<li>API列表</li>
+            </ul>
+        </div>
+    </div>  
+</div>  
+<script language="javascript">
+    Qfast(false, 'tabcard', function () {
+        var tabCard1 = new uedTabCard();
+        tabCard1.tabBtnId = "cardBtn1"; //页卡按钮容器id  
+        tabCard1.tabBtnTag = "li"; //页卡按钮元素名称  
+        tabCard1.tabBtnClass = "tabBtn"; //页卡按钮class名称  
+        tabCard1.curBtnStyle = { curClass: "current" }; //页卡按钮的当前激活状态  
+        tabCard1.tabBodyId = "cardBody1"; //页卡实体容器id  
+        tabCard1.tabBodyTag = "div"; //页卡实体元素名称  
+        tabCard1.tabBodyClass = "tabBody"; //页卡实体class名称  
+        tabCard1.onEvent = "click"; //页卡的驱动时间click、mouseover等  
+        tabCard1.curIndex = 0; //默认激活状态的页卡，从0开始  
+        tabCard1.init();
+    })  
+</script>  
+
+                
+
+        
+    </div>
+<script type="text/javascript">
+		$(function() {
+			$("#browser").treeview();
+			$("#browser").bind("contextmenu", function(event) {
+				if ($(event.target).is("li") || $(event.target).parents("li").length) {
+					$("#browser").treeview({
+						remove: $(event.target).parents("li").filter(":first")
+					});
+					return false;
+				}
+			});
+		})
+</script>
+</body>
+</html>

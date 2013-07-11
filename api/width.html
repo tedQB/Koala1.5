@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K/KK().width</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css" />
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">DOM操作</a><i>&gt;</i><a href="javascript:void(0)">样式相关</a><i>&gt;</i><span>K().width</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K().width([number])
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+<textarea name="code" class="js" id="code">
+设置元素的宽度值，获取样式的宽度值
+</textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+      <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>number</b> 
+                    </td>
+                    <td>
+                        number 
+                    </td>
+                    <td>
+                       宽度设置值
+                    </td>
+               </tr>
+               
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Kdom
+                    </td>
+                    <td>
+                       返回Kdom链
+                    </td>
+               </tr>
+           </table>
+      </div>
+      <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Number
+                    </td>
+                    <td>
+                        元素宽度值，不带"px" 
+                    </td>
+               </tr>
+           </table>
+      </div>	  
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p> 使用K().width([number])综合示例</p>
+      </div>
+      
+<textarea class="html code code_html" style="height:345px; ">
+
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<body>
+<style>
+	#e1{width:100px; height:50px; font-weight:bold; background-color:green; color:blue; color:#fff}
+</style>
+<div id="e1">1</div>
+<script>
+    window.onload = function () {
+        K("e1").width(200);
+		alert( K("e1").width()) //200
+    }
+    /*
+    结果：
+        try yourself.
+    */
+
+    </script>
+
+</body>
+
+
+
+</textarea>
+<br />
+
+
+
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p>
+          三种设置样式的方式，自己熟悉哪个风格就用哪个
+        </p>
+      </div>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner" id="authors">
+  </div>
+  <script type="text/javascript" src="http://mat1.gtimg.com/joke/Koala/time2.js">
+</script>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+    addOnLoad(function () {
+        dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+        dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+        dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+        dp.SyntaxHighlighter.HighlightAll("code");
+    });
+	</script>
+</body>
+</html>

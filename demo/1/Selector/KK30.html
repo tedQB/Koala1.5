@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">选择器</a><i>&gt;</i><a href="javascript:void(0)">sizzle选择器</a><i>&gt;</i><span>KK('#id')</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+KK('#id')
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+<textarea name="code" class="js" id="code">
+选择一个具有给定id属性的单个元素。</textarea>   
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p> 使用KK('#id')返回示例</p>
+      </div>
+      
+<textarea class="html code code_html" style="height:420px; ">
+
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<head>
+<style>
+  div {
+    width: 90px;
+    height: 90px;
+    float:left;
+    padding: 5px;
+    margin: 5px;
+    background-color: #EEEEEE;
+  }
+  </style>
+</head>
+<body>
+ <div id="notMe"><p>id="notMe"</p></div>
+
+  <div id="myDiv">id="myDiv"</div> <!--#myDiv 被选中-->
+<script>
+window.onload = function (){
+  KK("#myDiv").css("border","3px solid red");
+}
+</script>
+</body>
+</html>
+
+</textarea>
+<br />
+<textarea class="html code code_html" style="height:420px; ">
+
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<head>
+<style>
+  div {
+    width: 300px;
+    float:left;
+    padding: 2px;
+    margin: 3px;
+    background-color: #EEEEEE;
+  }
+  </style>
+</head>
+<body>
+  <div id="myID.entry[0]">id="myID.entry[0]"</div>
+
+  <div id="myID.entry[1]">id="myID.entry[1]"</div> <!--#myID\\.entry\\[1\\] 被选中-->
+  <div id="myID.entry[2]">id="myID.entry[2]"</div>
+<script>
+window.onload = function(){
+KK("#myID\\.entry\\[1\\]").css("border","3px solid red");
+}
+</script>
+</body>
+</html>
+
+</textarea>
+
+
+</div>
+
+
+</div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+:hidden,:visible元素遍历
+
+1,插件模式K("test").fx({left:1,right:2,color:'red'});

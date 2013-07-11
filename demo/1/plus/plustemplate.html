@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../../css/content.css" />
+<script type="text/javascript" src="../Koala.js"></script>
+<script type="text/javascript" src="../../../js/highlight.js"></script>
+<script type="text/javascript" src="../../../js/eval.js"></script>
+<script type="text/javascript" src="../../../js/jseval.js"></script>
+    <style type="text/css">
+        .logo{ float:left; margin-right:1px; }
+        .cItemInner{ overflow:hidden; zoom:1; }
+        .f14{ font-size:14px; text-indent:2em; }
+    </style>
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>
+          <span></span>Koala疑难点解析</h2>
+    </div>
+  </div>    
+  <div class="crumbs">
+    <a href="javascript:void(0)">开始</a><i>&gt;</i><span>Koala</span>
+  </div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+        
+          <img src="../../../1.png" alt="Alternate Text" width="100" height="100" class="logo"/>   
+        
+          <p class="f14">
+                 约定的标准插件开发格式,由于javascript的灵活性，导致一种应用可以使用N种代码书写方式来实现，为了统一管理，方便多人协作，我们约定了两种插件的开发模式。请看下面。
+          </p>
+          <p class="f14">
+
+          </p>
+      
+      
+              
+      </div>
+    </div>
+	<div class="tItem">
+      <div class="tItemInner">
+        <h3>文档范例</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner sp1">
+<p class="f14" style=" margin:10px 0 10px">方案一（工厂模式）</p>	
+<textarea name="code" class="js">
+/**
+ * @简单TAB切换插件，依赖Koala主脚本
+ * @作者:Tomiezhang#tencent.com
+ * @时间:2011-12-29
+ * @版本:v1.0.0
+ * @参数:args{boxId:容器className,headMod:页卡触发方式,selectClass:页卡选中样式名}
+**/
+(function($,$$){
+	var tab = K.tab = function(args){
+		return new _tab(args);
+	};
+	var _tab = function(args){
+		this.myId= $(args.myId)；
+	};
+	_tab.prototype = {
+		myMethod:function(){
+//some Method
+       }
+	}
+})(K,KK)
+</textarea>
+<p class="f14" style=" margin:10px 0 10px">
+我们约定将插件的域缩小在一个闭包内,同时将考拉的两个API【K/KK】传入闭包，并将其改写为比较常用的$/$$(或者是你喜欢的其他的符号，不要也可以)，定义一个该域下的全局函数，并将它注册到K下，这样防止你的插件和页面上其他的脚本冲突，同时传入一组参数，以个性化我们的插件，在返回值的时候我们new一个新的对象，这个对象以下划线+插件名组成，这样我们在使用的时候就不用丑陋的使用new了，最后我们对new的对象根据我们的需要进行扩展。你也可以将此作为自己的一个程序库，把你写过的函数集放入，Koala能够为你的程序集做必要支撑
+<br />
+</p>
+<p class="f14">感谢tomiezhang提供此种开发模式，此方式可以帮助你上手JS基础模块开发，注重JS工厂模式创建类对象的应用。新手或者已经有此编程习惯的同学推荐此种方式</p>
+<br />
+<p class="f14" style=" margin:10px 0 10px">方案二（Koala内置模式）</p>	
+<textarea name="code" class="js">
+/**
+ * @门户脚本集合，终结者（Terminator）
+ * @作者:boqiu#tencent.com
+ * @时间:2012-6-1
+ * @版本:v1.0.0
+**/
+(function(K){
+   var tab=KClass.create({ 
+      init:function(options){ 
+      this.opt={ 
+        id:'',//焦点图包裹id
+        tabTn:'',// ** 按钮配置元素
+        conCn:'',//** 大图域配置class	
+      }
+      var o=this;			
+      K.extend(this.opt,options);//覆盖默认参数
+      K.extend(o,this.opt); //把参数赋值到KClass对象的属性上
+      delete this.opt; //释放默认参数  
+      ....
+     },
+     myMethod1:function(){},
+     myMethod2:function(){}
+  })
+  K.tabs = function (options) {
+     return new tabs(options)
+  }
+  function privatefunc1(){} 私有函数1
+  function privatefunc2(){} 私有函数2
+
+})(Koala)
+</textarea>
+<p class="f14" style=" margin:10px 0 10px">
+只所以叫做内置模式，是因为Koala内部提供了一个面向对象的编程机制，依照此种方式，同样我们可以将插件的域缩小在一个闭包内,同时将考拉Koala传入闭包，并将其改写为比较常用的$(或者是你喜欢的其他的符号，不要也可以)，在返回值的时候我们new一个新的对象，这样我们在使用的时候就不用丑陋的使用new了，最后我们对new的对象根据我们的需要进行扩展。你也可以将此作为自己的一个程序库，把你写过的函数集放入，Koala能够为你的程序集做必要支撑。
+</p>
+<p class="f14" style=" margin:10px 0 10px">此方法可以助力理解面向对象的前端JS开发模式。在深入了解Koala后，可以尝试此种方式。你会发现这个方法可以精简不少代码量，并且可读性强，易于协作和分发</p>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="../../../js/ycnlib.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("../../../js/xyntaxhighlighter.css", "../../../js/shcore.js", "../../../js/shbrushjscript.js", "../../../js/shbrushxml.js", "../../../js/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "../js/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

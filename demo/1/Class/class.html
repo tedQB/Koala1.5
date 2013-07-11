@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">定义类或对象</a><i>&gt;</i><span>create</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+create([superclass][,methods])
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+       K.fn.create内部的返回一个初始化的函数klass，当函数被调用，将会触发它自己的init方法。
+       如果通过K.fn.create创建的对象中的方法覆盖了父对象中的方法，父对象的方法仍然也可以访问，不过要把Ksuper作为init第一个参数，让Ksuper在函数范围内作为一个可用的方法。
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>superClass</b> <em>(可选)</em>
+                    </td>
+                    <td>
+                        Class
+                    </td>
+                    <td>
+                        继承的父对象
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>methods</b><em>(可选)</em>
+                    </td>
+                    <td>
+                        Literal
+                    </td>
+                    <td>
+                        类字面量 
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Function
+                    </td>
+                    <td>
+                        返回创建的Class 
+                    </td>
+               </tr>
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 利用KClass创建对象,继承父对象示例</p>
+      </div>
+<textarea class="js code code_js" style="height:360px; ">
+    var Animal = K.fn.create({     
+        init: function(name, sound)   
+        {       
+            this.name = name;       
+            this.sound = sound;     
+        },     
+        speak: function()   
+        {       
+            alert(this.name + " says: " + this.sound + "!");     
+        }   
+     });   
+      
+     var Elephant=new Animal("Elephant",'nnnnnnn');  
+     Elephant.speak();  
+
+     // 继承父对象Animal,创建一个Snake对象 
+     var Snake = K.fn.create(Animal, {   
+        init: function(Ksuper, name) 
+        {     
+            Ksuper(name, '丝丝丝丝');   //调用夫类的initialize方法初始化参数
+        } 
+      });
+     var ringneck = new Snake("眼镜蛇");
+     ringneck.speak(); 
+</textarea>
+
+
+        
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i></i>对比以工厂模式创建对象方式</p>
+      </div>
+<textarea name="code" class="js" id="Textarea1">
+var Animal=function(name,sound){
+    this.name=name;
+    this.sound=sound;
+}
+Animal.prototype={
+    speak:function(){
+        alert(this.name + " says: " + this.sound + "!");  
+    }
+}
+var Elephant=new Animal("Elephant",'nnnnnnn');  
+Elephant.speak();  
+
+var Snake=function(name,sound){
+    Animal.call(this,name);
+    Animal.call(this,sound);
+}
+Snake.prototype=new Animal();
+var ringneck=new Snake("眼镜蛇","丝丝丝丝");
+ringneck.speak();
+
+</textarea>
+      <div class="qbar mt10">
+       	<p><i>1.</i>减少代码量</p>
+    </div>
+      <div class="qbar mt10">
+	    <p><i>2.</i>代码可读性，可理解性增强,便于维护和协作开发</p>
+    </div>
+
+
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

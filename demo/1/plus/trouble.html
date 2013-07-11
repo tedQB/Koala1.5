@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../../css/content.css" />
+<script type="text/javascript" src="../Koala.js"></script>
+<script type="text/javascript" src="../../../js/highlight.js"></script>
+<script type="text/javascript" src="../../../js/eval.js"></script>
+<script type="text/javascript" src="../../../js/jseval.js"></script>
+    <style type="text/css">
+        .logo{ float:left; margin-right:1px; }
+        .cItemInner{ overflow:hidden; zoom:1; }
+        .f14{ font-size:14px; text-indent:2em; }
+    </style>
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>
+          <span></span>Koala疑难点解析</h2>
+    </div>
+  </div>    
+  <div class="crumbs">
+    <a href="javascript:void(0)">开始</a><i>&gt;</i><span>Koala</span>
+  </div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+        
+          <img src="../../../1.png" alt="Alternate Text" width="100" height="100" class="logo"/>   
+        
+          <p class="f14">
+            为方便团队成员使用Koala，在此开辟一个新的单元，专门讲述Koala的一些技术细节和使用疑难点。疑难点均是根据定期采集到的使用者的反馈，如果你有新的意见或者疑难点，请去tapd地址，进行在线提单，我会为你及时解决。
+          </p>
+          <p class="f14">
+
+          </p>
+      
+      
+              
+      </div>
+    </div>
+	<div class="tItem">
+      <div class="tItemInner">
+        <h3>问题以及解答</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner sp1">
+	
+<textarea name="code" class="js">
+问题1，用 K(), KK() 两个选择器有什么不同，它与原生方法document.getElementById有什么区别，在使用过程中应该注意到什么。
+</textarea>
+<p class="f14" style=" margin:10px 0 10px">答：根据观察使用Koala的情况，新手不免在这个问题上出现问题。究其原因，是不理解原生对象，Koala对象的概念。对号入座，可以看下面两张图，它可以反映两者的区别和联系，帮助理解</p>
+<br />
+<img src="http://mat1.gtimg.com/joke/Koala/pic/kp1.jpg" />	      
+<img src="http://mat1.gtimg.com/joke/Koala/pic/kp2.jpg" width="840" style="vertical-align:top"/>
+<p class="f14" style=" margin:10px 0 10px">
+   只有使用Koala选择器，才能够使用Koala的内置方法，有些同学使用getElementById("")等原生方法去选择节点，然后竟然直接附加Koala的方法，结果当然是不对的。
+<br />设计Koala的选择器的时候，为了照顾不同的基础的同学，保留了原生.node原生api,同时为了打破业界库比如JQuery的封闭，提高库函数的灵活性，从而设计出了K,KK的选择机制。具体使用细节请参看<a href="http://10.152.21.241/uploads/K/Koala/demo/1/Selector/K.html" target="mainFrame" class="">K( )</a>,<a href="http://10.152.21.241/uploads/K/Koala/demo/1/Selector/KKselector.html" target="mainFrame" class="">KK( )</a>
+<br />注意在使用上，应该以Koala对象的内置方法为主，Koala API基本可以满足日常所需，如果有需要新的函数功能可以提供反馈。助力Koala发展。
+</p>  
+<textarea name="code" class="js">
+问题2，我想编写Koala插件，该如何入手
+</textarea>
+<p class="f14" style=" margin:10px 0 10px">答：想编写插件，首先要理解插件的机制，<a href="http://10.152.21.241/uploads/K/Koala/demo/1/plus/howto.html" target="mainFrame" class="">请看这里</a></p>
+<p class="f14" style=" margin:10px 0 10px">理解之后，想要进行插件开发，这里提供了编写插件的规范，<a href="http://10.152.21.241/uploads/K/Koala/demo/1/plus/plustemplate.html" target="mainFrame" class="">点击</a></p>		      
+<br />
+      </div>
+    </div>
+  
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="../../../js/ycnlib.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("../../../js/xyntaxhighlighter.css", "../../../js/shcore.js", "../../../js/shbrushjscript.js", "../../../js/shbrushxml.js", "../../../js/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "../js/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

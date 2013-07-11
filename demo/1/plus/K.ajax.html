@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+    <style type="text/css">
+        .nf{ font-size:14px; text-indent:2em;}
+    </style>
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">常用插件</a><i>&gt;</i><span>K.ajax</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K.ajax(options)
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+       一个ajax插件，清晰明了的api可以简化您的ajax开发
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+                <tr>
+                    <td>
+                        <b>options</b> 
+                    </td>
+                    <td>
+                       mix
+                    </td>
+                    <td>
+                        ajax请求配置选项
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">options可配置项,粗体为默认选项</td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>asynchronous</b> (可选)
+                    </td>
+                    <td>
+                       <b>true</b>/false 
+                    </td>
+                    <td>
+                        同步请求还是异步请求
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>contentType</b> (可选)
+                    </td>
+                    <td>
+                       <b>'text/html'</b>,"text/javascript","text/xml","application/xml"
+                    </td>
+                    <td>
+                        请求类型
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>encoding</b> (可选)
+                    </td>
+                    <td>
+                       <b>UTF-8</b>
+                    </td>
+                    <td>
+                        请求编码
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>url</b> (必选)
+                    </td>
+                    <td>
+                       支持.html,.json,.xml
+                    </td>
+                    <td>
+                        请求服务器资源地址
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>readyState</b> (可选)
+                    </td>
+                    <td>
+                       <b>0</b>
+                    </td>
+                    <td>
+                        服务器状态码
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>parameters</b> (可选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        向服务器发送请求url后缀参数
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>requestHeader</b> (可选)
+                    </td>
+                    <td>
+                       []
+                    </td>
+                    <td>
+                        发送请求头信息
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>method</b> (可选)
+                    </td>
+                    <td>
+                       <b>get</b> set
+                    </td>
+                    <td>
+                        请求类型
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>send</b> (可选)
+                    </td>
+                    <td>
+                       <b>null</b> 
+                    </td>
+                    <td>
+                        向服务器发送的数据
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>loadListener</b> (可选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        readyState为1时调用的onreadystatechange监听器
+                    </td>
+               </tr>
+                <tr>
+                    <td>
+                        <b>loadedListener</b> (可选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        readyState为2时调用的onreadystatechange监听器
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>ineractiveListener</b> (可选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        readyState为3时调用的onreadystatechange监听器
+                    </td>
+               </tr>
+
+               <tr>
+                    <td>
+                        <b>htmlResponseListener(xhr.responseText)</b> (依赖必选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        当请求成功并且响应的Content-Type为text/html时调用的侦听器，这个侦听器将从响应中取得的HTML字符串作为其第一个参数
+                    </td>
+               </tr>
+<tr>
+                    <td>
+                        <b>xmlResponseListener(xhr.responseXML)</b> (依赖必选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        当请求成功并且响应的Content-Type为application/xml或者application/xhtml+html时调用的侦听器，这个侦听器将从响应中取得的XML DOM文档作为其第一个参数
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>completeListener(arg)</b> (可选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        当上面所有所列的针对Contont-Type为text/html或者text/json时调用的侦听器，这个侦听器总是在成功响应后被调用，可以作为兜底儿的侦听器
+                    </td>
+               </tr>
+<tr>
+                    <td>
+                        <b>errorListener(arg)</b> (可选)
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                    当响应状态值不是200也不是2时调用的侦听器，如果在本地上运行XMLHttpRequest,那么状态值始终是0.
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        无
+                    </td>
+                    <td>
+                        无
+                    </td>
+               </tr>
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 使用K.ajax示例</p>
+      </div>
+<textarea class="js code code_js" style="height:390px;">
+    K.ajax({
+        method: 'get',
+        parameters: 'section=blog&id=45',
+        requestHeader: ["author", "boqiu", "JSframe", "Koala"],
+        contentType: 'text/html',
+        url: ../beijing.html, /*JSON-P支持*/
+        loadListener: function () {
+            alert("loadListener");
+        },
+        htmlResponseListener: function (content) {
+            K("ipredirect").html(content);
+            //content为返回的responseText
+            //K("ipredirect").html(this.responseText) 也可以
+        },
+        xmlResponseListener：function(content){ 
+            //content为返回的xhr.response
+            //K("ipredirect").html(this.responseXML) 可可以
+        },
+        completeListener：function(){
+            log("complete")
+        },
+        errorListener:function(){ 
+            log("error")
+        }
+
+    })
+</textarea>
+        <p class="nf">
+        <br />
+        <img src="ajaxplus/1123.png" alt="Alternate Text" />        
+        </p>
+
+        <p class="nf">
+ 示例地址：<a href="ajaxplus/ajaxdemo.html" target="_blank">demo/1/plus/ajaxplus/ajaxdemo.html</a>       
+        </p>
+        <p class="nf">
+下载地址：<a href="ajaxplus.zip" target="_blank">ajaxplus</a>       
+        </p>
+
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>plus author <span class="author">boqiu</span> complete time:2011.12.2 </p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+    addOnLoad(function () {
+        dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+        dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+        dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+        dp.SyntaxHighlighter.HighlightAll("code");
+    });
+	</script>
+</body>
+</html>

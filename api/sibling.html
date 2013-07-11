@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K/KK().sibling</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/content.css" />
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">DOM操作</a><i>&gt;</i><a href="javascript:void(0)">查找</a><i>&gt;</i><span>K/KK().sibling</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K/KK().sibling([idx|flag])
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+<textarea name="code" class="js" id="code">
+主要支持以下几种用法：
+1、无参数时获取所有所有非文本节点的所有兄弟节点
+2、参数为数字时获取第IDX个兄弟节点，为负时从最后一个算起，-1表示最后一个兄弟节点
+3、参数为-1时相当于prev
+4、参数为1时相当于next
+</textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+      <div class="qbar mt10">
+      	<p>获取其他兄弟节点</p>
+        <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>无</b>
+                    </td>
+                    <td>
+      
+                    </td>
+                    <td>
+
+                    </td>
+               </tr>
+               
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Kdoms
+                    </td>
+                    <td>
+                       返回doms链
+                    </td>
+               </tr>
+           </table>
+      </div>
+       <div class="qbar mt10">
+      	<p>获取相对当前节点的第IDX个兄弟节点</p>
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>idx</b> 
+                    </td>
+                    <td>
+                        Number
+                    </td>
+                    <td>
+                        index值
+                    </td>
+               </tr>
+               
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        kdoms
+                    </td>
+                    <td>
+                        返回doms链 
+                    </td>
+               </tr>
+           </table>
+      </div>     
+      <div class="qbar mt10">
+      	<p>获取相对小于或大于的兄弟节点</p>
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>flag</b> 
+                    </td>
+                    <td>
+                        String
+                    </td>
+                    <td>
+                        >大于，<小于
+                    </td>
+               </tr>
+               
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        kdoms
+                    </td>
+                    <td>
+                        返回doms链 
+                    </td>
+               </tr>
+           </table>
+      </div>
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p> 使用K/KK().sibling([idx|flag])综合示例</p>
+      </div>
+      
+<textarea class="html code code_html" style="height:495px; ">
+
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<body>
+<ul>
+    <li>老大</li>
+    <li>老二</li>
+    <li id="me">老三</li>
+    <li>老四</li>
+    <li>老小</li>
+</ul>
+<script>
+    window.onload = function () {
+        alert(K("me").sibling(2).html());
+        alert(K("me").sibling(-1).html());
+        alert(K("me").sibling().html());
+        alert(K("me").sibling(">").html());
+        alert(K("me").sibling("<").html());
+    }
+    /*
+        结果：
+        "老小"
+        "老二"
+        "老大,老二,老四,老小"
+        "老四,老小"
+        "老大,老二"
+    */
+
+    </script>
+
+</body>
+
+
+
+</textarea>
+<br />
+
+
+
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p>
+            正数向下找，负数向下找，">"向下找，"<"向上找，()返回所有同辈节点,html()等同与innerHTML
+        </p>
+      </div>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By.<span class="author">boqiu</span>2011.10.10 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+</script>
+</body>
+</html>

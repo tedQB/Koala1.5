@@ -1,0 +1,400 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+    <style type="text/css">
+        .logo{ float:left; margin-right:1px; }
+        .cItemInner{ overflow:hidden; zoom:1; }
+        .f14{ font-size:14px; text-indent:2em; }
+        .nf{ font-size:14px;  }
+               .nf2{ font-size:14px; margin-left:17px; } 
+               .int2{ text-indent:2em; }
+        div.dp-highlighter{ margin:5px 0; }
+    </style>
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>
+          <span></span>如何使用Koala编写插件</h2>
+    </div>
+  </div>    
+  <div class="crumbs">
+    <a href="javascript:void(0)">插件机制</a><i>&gt;</i><span>如何编写Koala插件</span>
+  </div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>概述</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+        
+          <img src="../../../1.png" alt="Alternate Text" width="100" height="100" class="logo"/>   
+        
+          <p class="f14">
+Koala插件的开发包括两种： </p>
+<p class="f14">
+一种是类级别的插件开发，即给Koala添加新的全局函数，相当于给Koala类本身添加方法。
+Koala的全局函数就是属于Koala命名空间的函数。</p>
+<p class="f14">
+另一种是对象级别的插件开发，即给Koala对象添加方法。下面就两种函数的开发做详细的说明。 
+          </p>
+      </div>
+    </div>
+	<div class="tItem">
+      <div class="tItemInner">
+        <h3>1、类级别的插件开发</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner sp1">
+	<p class="nf2">
+类级别的插件开发最直接的理解就是给Koala类添加类方法，可以理解为添加静态方法。典型的例子就
+是K.ajax()这个函数，将函数定义于Koala的命名空间中。关于类级别的插件开发可以采用如下几种形式进行扩展： </p>  	
+	<p class="nf"><strong>1.1 添加一个新的全局函数 </strong>
+
+</p>  	
+          <p class="nf2">
+     添加一个全局函数，我们只需如下定义：         
+          </p>
+<textarea name="code" class="js">
+Koala.foo = function() {  
+    alert('This is a test. This is only a test.'); 
+};   
+调用的时候可以这样写： Koala.foo(); 或 K.foo();   
+</textarea>		
+
+	<p class="nf"><strong>1.2 增加多个全局函数 </strong>
+ </p>  	
+          <p class="nf2">
+     类添加多个全局函数，可采用如下定义：           
+          </p>
+<textarea name="code" class="js">
+Koala.foo = function() {  
+    alert('This is a test. This is only a test.'); 
+}; 
+Koala.bar = function(param) {  
+    alert('This function takes a parameter, which is "' + param + '".'); 
+};  
+调用时和一个函数的一样的:Koala.foo();Koala.bar();或者K.foo();K.bar('bar'); 
+</textarea>		
+	<p class="nf"><strong>1.3 使用Koala.extend(object); </strong><br />
+    </p>
+<textarea name="code" class="js">
+Koala.extend({     
+    foo: function() {     
+        alert('This is a test. This is only a test.');     
+    },     
+    bar: function(param) {     
+        alert('This function takes a parameter, which is "' + param +'".');     
+    }    
+}); 
+</textarea>	      
+
+	<p class="nf"><strong>1.4 使用命名空间  </strong>
+</p>  	
+          <p class="nf2 int2">
+虽然在Koala命名空间中，我们禁止使用了大量的javaScript函数名和变量名。但是仍然不可避免某
+些函数或变量名将于其他Koala插件冲突，因此我们习惯将一些方法封装到另一个自定义的命名空间。  
+          </p>
+<textarea name="code" class="js">
+Koala.myPlugin = {         
+    foo:function() {         
+        alert('This is a test. This is only a test.');         
+    },         
+    bar:function(param) {         
+        alert('This function takes a parameter, which is "' + param + '".');   
+    }        
+}; 
+采用命名空间的函数仍然是全局函数，调用时采用的方法： 
+K.myPlugin.foo();        
+K.myPlugin.bar('baz'); 
+通过这个技巧（使用独立的插件名），我们可以避免命名空间内函数的冲突
+</textarea>		
+	      
+<br />
+      </div>
+    </div>
+	<div class="tItem">
+      <div class="tItemInner">
+        <h3>2、对象级别的插件开发 </h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner sp1">
+	<p class="nf2">
+对象级别的插件开发需要如下的两种形式：</p>  	
+	<p class="nf2">
+形式1：   
+</p>  	
+<textarea name="code" class="js">
+(function(K){    
+    K.P.fn.extend({    
+        pluginName1:function(opt,callback){    
+           // 我们的插件代码可以添加到这里    
+        }
+        pluginName2:function(opt,callback){    
+           // 我们的插件代码可以添加到这里         
+        }               
+    })    
+})(Koala);     
+</textarea>		
+
+	<p class="nf2">
+形式2：   
+</p>  	
+<textarea name="code" class="js">
+(function(K) {      
+    K.P.pluginName = function() {    
+         // 我们的插件代码可以添加到这里   
+    };    
+})(Koala);     
+</textarea>
+          <p class="nf2 int2">
+          上面定义了一个Koala函数,形参是K，函数定义完成之后,把Koala这个实参传递进去.立即调用执行。
+这样的好处是,我们在写Koala插件时,也可以使用K这个别名,而不会与其他域的变量名称引起冲突. 
+          </p>		
+	<p class="nf"><strong>2.1 在Koala名称空间下申明一个名字 </strong><br />
+    </p>
+          <p class="nf2 int2">
+        这是一个单一插件的脚本。 如果你的脚本中包含多个插件， 或者互逆的插件 （例如：  K.P.doSomething() 
+和 K.P.undoSomething()），那么你需要声明多个函数名字。但是，通常当我们编写一个插件时，力求仅使用一个名字来包含它的所有内容。我们的示例插件命名为"highlight"      
+          </p>
+<textarea name="code" class="js">
+K.P.highlight = function() {   
+  // Our plugin implementation code goes here.   
+};   
+我们的插件通过这样被调用： 
+K('myDiv').hilight();     
+</textarea>	      
+          <p class="nf2 int2">
+       但是如果我们需要分解我们的实现代码为多个函数该怎么办？有很多原因：设计上的需要；这样做更容易
+或更易读的实现；而且这样更符合面向对象。 这真是一个麻烦事，把功能实现分解成多个函数而不增加多余的
+命名空间。出于认识到和利用函数是javascript中最基本的类对象，我们可以这样做。就像其他对象一样，
+函数可以被指定为属性。因此我们已经声明“highlight”为Koala的属性对象，任何其他的属性或者函数我们
+需要暴露出来的，都可以在"highlight" 函数中被声明属性。下面继续。    
+          </p>
+	<p class="nf"><strong>2.2 接受options参数以控制插件的行为  </strong>
+ </p>  	
+          <p class="nf2">
+  让我们为我们的插件添加功能指定前景色和背景色的功能。我们也许会让选项像一个options对象传递给
+插件函数。例如：           
+          </p>
+
+<textarea name="code" class="js">
+// plugin definition   
+    K.P.highlight = function (options) {
+        var defaults = {
+            foreground: 'red',
+            background: 'yellow'
+        };
+        // Extend our default options with those provided.   
+        var opts = K.extend(defaults, options);
+        this.css("background-color", opts.foreground);
+
+       // 我们的插件代码可以继续添加到这里  
+    };   
+    我们的插件可以这样被调用： 
+    K('myDiv').highlight({  
+        foreground: 'blue'   
+    });
+</textarea>		
+	<p class="nf"><strong>2.3 保持私有函数的私有性 </strong>
+ </p>  	
+          <p class="nf2 int2">
+这种技巧暴露你插件一部分来被覆盖是非常强大的。但是你需要仔细思考你实现中暴露的部分。一但被暴
+露，你需要在头脑中保持任何对于参数或者语义的改动也许会破坏向后的兼容性。一个通理是，如果你不能肯
+定是否暴露特定的函数，那么你也许不需要那样做。       
+          </p>
+          <p class="nf2 int2">
+那么我们怎么定义更多的函数而不搅乱命名空间也不暴露实现呢？这就是闭包的功能。为了演示，我们将
+会添加另外一个“debug”函数到我们的插件中。这个 debug函数将为输出被选中的元素格式到firebug控制
+台。为了创建一个闭包，我们将包装整个插件定义在一个函数中。    
+          </p>
+
+<textarea name="code" class="js">
+ (function(K) {   
+  // 插件定义 
+  K.P.hilight = function(options) {   
+    debug(this);   
+    // ...   
+  };   
+  // 一个负责调试的私有函数  
+  function debug($obj) {   
+    if (window.console && window.console.log)   
+      window.console.log('hilight selection count: ' + $obj.html());   
+  };   
+//  ...   
+})(Koala);   
+我们的“debug”方法不能从外部闭包进入,因此对于我们的实现是私有的。 
+</textarea>		      
+	<p class="nf"><strong>2.4 整合 </strong>
+ </p>  	
+          <p class="nf2">
+下面使我们的例子完成后的代码：    
+          </p>
+<textarea name="code" class="js">
+// 创建一个闭包   
+(function(K) {   
+  // 插件的定义   
+  K.P.hightlight = function(options) {   
+        debug(this);   
+        // 插件的默认参数配置   
+        var defaults = {
+            foreground: 'red',
+            background: 'yellow'
+        };
+        // Extend our default options with those provided.   
+        var opts = K.extend(defaults, options);
+        this.css("background-color", opts.foreground);
+
+        // 我们的插件代码可以继续添加到这里 
+  }
+  // 私有函数：debugging   
+  function debug($obj) {   
+      alert('hilight selection count: ' + $obj.css("background-color"));   
+  }
+    // 定义暴露myFormat函数     
+    K.myFormat = function (txt) {
+        return '<strong>' + txt + '</strong>';
+    }; 
+  // 闭包结束   
+ })(Koala)
+</textarea>		
+          <p class="nf2">
+            这段设计创建了强大符合规范的插件。我希望它可以帮助您开启您的插件开发之路。     
+          </p>
+
+	<p class="nf"><strong> </strong>
+ </p>  	
+
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>3、总结 </h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+              <p class="nf2">
+Koala为开发插件提拱了两个方法，分别是： 
+          </p>
+<textarea name="code" class="js">
+Koala.P.fn.extend(object);  给Koala对象添加方法。 
+Koala.extend(object);  为扩展Koala类本身.为类添加新的方法。 
+</textarea>		
+	<p class="nf"><strong>3.1 K.P.fn.extend(object);   </strong>
+ </p>  	
+<p class="nf2 int2">
+虽然 javascript 没有
+明确的类的概念，但是用类来理解它，会更方便。Koala便是一个封装得非常好的类，比如我们用语句 
+K("btn1") 会生成一个单节点Koala类的实例。 
+          </p>
+          <p class="nf2 int2">
+K.P.fn.extend(object); 对Koala.prototype进得扩展， 就是为Koala类添加“成员函数”。
+Koala类的实例可以使用这个“成员函数”。 
+          </p>
+          <p class="nf2 int2">
+比如我们要开发一个插件，做一个特殊功能，当一个节点被点击时，便alert 当前编辑框里的内容。可以这
+么做： 
+          </p>
+<textarea name="code" class="js">
+K.P.fn.extend({          
+     alertWhileClick:function(){         
+         K(this).click(function(){        
+              alert(K(this).html());         
+          });         
+      }         
+});     
+K("div1").alertWhileClick(); //页面上为：<div id="div1">div1div1</div>  
+K("div1") 为一个Koala实例，当它调用成员方法 alertWhileClick后，便实现了扩展，每次被点击时它会先弹出div框内的文本。 
+-----------------------------
+再或者，可以这样简单点儿：
+K.P.alertWhiteClick=function(){
+    K(this).click(function(){        
+        alert(K(this).html());         
+    });    
+}
+</textarea>		
+	<p class="nf"><strong>3.2 Koala.extend(object);    </strong>
+ </p>  	
+           <p class="nf2">
+为Koala类添加添加类方法，可以理解为添加静态方法。如： 
+          </p>
+<textarea name="code" class="js">
+K.extend({
+    myAdd:function(a,b){return a+b;} 
+})
+------------------------------------
+K.myAdd=function(a,b){ 
+    return a+b;
+}
+这样就便为Koala 添加一个为 myAdd 的  “静态方法”，之后便可以在引入Koala的地方，使用这个方
+法了，K.myAdd(3,4); //return 7 
+</textarea>		
+
+
+    </div>
+
+
+</div>
+
+
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>插件更新日志</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+
+<textarea name="code" class="js" id="Textarea7">
+2011.12.2 Koala1.0插件机制开发完毕 boqiu开发了K.ajax插件
+2011.12.8 tomiezhang K.fx插件
+
+</textarea>
+
+
+
+      </div>
+    </div>
+
+
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2011.12.2 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

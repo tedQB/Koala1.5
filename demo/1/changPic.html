@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.scrollBox{ position:relative; width:800px; border:2px solid #ddd; height:427px;}
+.spilt{ position:absolute;}
+</style>
+<script language="javascript" src="koala/Koala.js"></script>
+</head>
+
+<body>
+<div class="scrollBox" id="scrollBox">
+  <div class="spilt" id="spilt0" style="left:0px; top:10px; width:500px; height:400px; z-index:0;"><a href="#"><img src="images/0.jpg" style="width:500px; height:400px;" /></a></div>
+  <div class="spilt" id="spilt1" style="left:80px; top:0; width:640px; height:427px; z-index:10;"><a href="#"><img src="images/1.jpg" style=" width:640px; height:427px; " /></a></div>
+  <div class="spilt" id="spilt2" style="left:300px; top:10px; width:500px; height:400px; z-index:0;"><a href="#"><img src="images/2.jpg" style="width:500px; height:400px;" /></a></div>
+</div>
+<div class="scrollHandle" style="font-size:36px;"><a href="#" id="leftcur">&lt;&lt;</a>&nbsp;<a href="#" id="rightcur">&gt;&gt;</a></div>
+<script language="javascript">
+	
+	//全局变量
+	var scrollBox=K("scrollBox").node;
+	var split=K("scrollBox").getByTagName("div");
+	var l=split.length;
+	
+	var tempArr=[];
+	
+	//移动公式
+	function f1(a1,b1,t,d){
+		return a1+b1*t/d;
+	}
+	
+	
+	//缓动
+	function Scrolldir(obj,m1,m2,w1,w2,h1,h2,t1,t2,time,z){
+		var flag=0;
+		this.m1=m1;
+		this.m2=m2;
+		this.w1=w1;
+		this.w2=w2;
+		this.h1=h1;
+		this.h2=h2;
+		this.t1=t1;
+		this.t2=t2;
+		this.time=time;
+		this.z=z;
+		obj=obj;
+		var n=0;
+		if(flag){
+			clearTimeout(flag);
+		}
+		
+		var time=time;
+		var temp=0;
+		var temp2=0;
+		var temp3=0;
+		
+		flag=setInterval(function(){
+			temp=f1(m1,m2,n,time);
+			obj.style.left=temp+"px";
+			temp4=f1(t1,t2,n,time);
+			obj.style.top=temp4+"px";
+			temp2=f1(w1,w2,n,time);
+			obj.style.width=temp2+"px";
+			obj.getElementsByTagName("img")[0].style.width=temp2+"px";
+			temp3=f1(h1,h2,n,time);
+			obj.style.height=temp3+"px";
+			obj.getElementsByTagName("img")[0].style.height=temp3+"px";
+			
+			n++;
+			if(n>time){
+				n=0;
+				clearInterval(flag);
+				obj.style.zIndex=z;
+			}
+		},10);
+
+			
+	}
+	
+	function currentArr(){
+		var temp=[];
+		for(var i=0;i<l;i++){
+			if(split[i].style.left=="0px"){
+				temp[0]=split[i];
+			}else if(split[i].style.left=="80px"){
+				temp[1]=split[i];
+			}else if(split[i].style.left=="300px"){
+				temp[2]=split[i];
+			}
+			
+		}
+		return temp;
+	}
+
+	K("leftcur").click(function () {
+	    tempArr = currentArr();
+	    Scrolldir(tempArr[0], 0, 80, 500, 140, 400, 27, 10, -10, 10, 10);
+	    Scrolldir(tempArr[1], 80, 220, 640, -140, 427, -27, 0, 10, 10, 0);
+	    Scrolldir(tempArr[2], 300, -300, 500, 0, 400, 0, 10, 0, 10, 0);	
+    })
+	K("rightcur").click(function () {
+		tempArr=currentArr();
+		Scrolldir(tempArr[0],0,300,500,0,400,0,10,0,10,0);
+		Scrolldir(tempArr[1],80,-80,640,-140,427,-27,0,10,10,0);
+		Scrolldir(tempArr[2],300,-220,500,140,400,27,10,-10,10,10);	    
+    
+   });
+
+
+	
+</script>
+</body>
+</html>

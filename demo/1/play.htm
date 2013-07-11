@@ -1,0 +1,721 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>贪吃蛇 by Koala</TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<style>  
+html,body{ overflow:hidden;text-align:center;}
+/*游戏相关样式*/
+#canvas{ width:800px; margin:0 auto; text-align:center; position:relative; background:#fff}
+#canvas table,#canvas td{ border-collapse:collapse; border-color:#ccc}
+#canvas .b{ background:#0C0}
+#canvas .head{ background:#00F}
+#canvas .food0{ background:url(img/1.jpg) no-repeat left top;}
+#canvas .food1{ background:url(img/2.jpg) no-repeat left top;}
+#canvas .food2{ background:url(img/3.jpg) no-repeat left top;}
+#canvas .food3{ background:url(img/4.jpg) no-repeat left top;}
+#canvas .food4{ background:url(img/5.jpg) no-repeat left top;}
+#canvas .food5{ background:url(img/6.jpg) no-repeat left top;}
+#canvas .food6{ background:url(img/7.jpg) no-repeat left top;}
+#canvas .food7{ background:url(img/8.jpg) no-repeat left top;}
+#canvas .food8{ background:url(img/9.jpg) no-repeat left top;}
+#canvas .food9{ background:url(img/10.jpg) no-repeat left top;}
+#canvas .food10{ background:url(img/11.jpg) no-repeat left top;}
+#canvas .food11{ background:url(img/12.jpg) no-repeat left top;}
+#canvas .food12{ background:url(img/13.jpg) no-repeat left top;}
+#canvas .food13{ background:url(img/14.jpg) no-repeat left top;}
+#canvas .food14{ background:url(img/15.jpg) no-repeat left top;}
+#canvas .food15{ background:url(img/16.jpg) no-repeat left top;}
+#canvas .food16{ background:url(img/17.jpg) no-repeat left top;}
+#canvas .food17{ background:url(img/18.jpg) no-repeat left top;}
+#canvas .food18{ background:url(img/19.jpg) no-repeat left top;}
+#canvas .food19{ background:url(img/20.jpg) no-repeat left top;}
+#canvas .food20{ background:url(img/21.jpg) no-repeat left top;}
+#canvas .food21{ background:url(img/22.jpg) no-repeat left top;}
+#canvas .food22{ background:url(img/23.jpg) no-repeat left top;}
+#canvas .food23{ background:url(img/24.jpg) no-repeat left top;}
+#canvas .food24{ background:url(img/25.jpg) no-repeat left top;}
+#mask {position:absolute;width:800px;height:800px;background:#000;;filter:alpha(opacity=50); -moz-opacity:0.5;opacity: 0.5;z-index:5;}
+#alert {position:absolute;width:800px;height:800px;z-index:6;text-align:center;line-height:800px;font-size:55px;color:#fff;font-weight:bold;}
+</style> 
+<script src="Koala.js"></script>
+</HEAD>
+<BODY>
+<div id="canvas">
+<div id="alert"></div>
+<div id="mask"></div>
+<table width="800" height="800" border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+  <tr>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+    <td width="40" height="40"></td>
+  </tr>
+</table>
+<script>
+	var snake = K.fn.create({
+		snakeBody:[188,189,190],
+		food:0,//食物坐标
+		head:0,
+		hiddenBox:0,
+		speed:800,
+		action:"right",				//l、r、t、b分别代表左右上下,默认向右
+		pause:true,//是否暂停
+		timer:null,
+		over:false,
+		snakeHead:function(){
+			return this.snakeBody[parseInt(this.snakeBody.length-1)]
+		},
+		each:function(item,fun){//Number each
+			if(K.C.isNumber(item)){
+				for(var i = 0; i <item; i++) {
+                      fun.call(item[i],i);
+                  }
+			}
+		},
+		init:function(time){
+			var _this = this;
+			K("alert").html("按键盘上下左右键开始!");
+			KK("#canvas td").each(function(a,b,c){
+				a.attr("id","box_"+b);
+			});
+			this.Draw();
+			this.speed = time;
+			this.head = this.snakeHead();
+			this.getFood();//生成食物
+			this.bindKey();
+		},
+		getStyle:function(){
+			var rod = parseInt(Math.random()*25);
+			return "food"+rod;
+		},
+		getFood:function(){
+			var _this = this;
+			this.food = parseInt(Math.random()*399);
+			K.A.each(this.snakeBody,function(o,i){
+				if(_this.food == o){
+					_this.getFood();
+					return false;
+				}
+			});
+		  K("box_"+this.food).addClassName(this.getStyle());
+		},
+		Draw:function(){//绘制
+			var _this = this;
+			this.each(this.snakeBody.length-1,function(o,i){
+				//K("box_"+_this.snakeBody[o]).toggleClassName("b");
+				document.getElementById("box_"+_this.snakeBody[o]).className="b";
+			});
+			K("box_"+this.snakeBody[this.snakeBody.length-1]).addClassName("head");
+			if(K("box_"+this.hiddenBox).classNames()!==""){
+				//var name = K("box_"+this.hiddenBox).classNames();
+				//alert(name)
+				//K("box_"+this.hiddenBox).removeClassName(name);
+				document.getElementById("box_"+this.hiddenBox).className="";
+			};
+		},
+		checkBody:function(){//检查吞噬
+			if(this.head == this.food){
+				K("box_"+this.hiddenBox).toggleClassName("b");
+				this.snakeBody.unshift(this.hiddenBox);				//蛇尾编号插入数组第一位，身长+1
+				this.getFood();										//重新生成食物
+				if(this.snakeBody.length%10 == 0){						//没增加10个长度加快一次速度
+					this.setSpeed();
+				}
+			}
+		},
+		show:function(num){//显示蛇身(参数表示上下左右移动的偏移量，初始为0)
+			var $ = function(v){return document.getElementById(v)};
+			this.head+=num;
+			this.hiddenBox = this.snakeBody.shift();	//数组去掉第一个值,蛇尾
+			this.snakeBody.push(this.head);			//数组追加新值
+			for(var i=0; i<this.snakeBody.length-1; i++){
+				$("box_"+this.snakeBody[i]).className = "b";
+			}	
+			$("box_"+this.snakeBody[this.snakeBody.length-1]).className = "head";
+			$("box_"+this.hiddenBox).className = "";
+			//this.Draw();
+			this.checkBody();//是否吃到食物
+			this.checkSelf();//检查是否撞到自己
+		},
+		setSpeed:function(){
+			this.speed = this.speed - parseInt(this.speed/4);		//每次加速1/4
+		},
+		checkSelf:function(){//检查是否撞到自己
+			var _this = this;
+			if(this.head == this.hiddenBox){//首尾相撞
+				 K("box_"+this.hiddenBox).toggleClassName("head");
+				 this.gameOver();	//游戏结束
+			}else{
+				this.each(this.snakeBody.length-1,function(o,i){//循环比较除了蛇头的点
+					if(_this.head == _this.snakeBody[o]){
+						_this.gameOver();	//游戏结束
+					}
+				})
+			}
+		},
+		gameOver:function(){
+			this.over = true;
+			K("alert").show();
+			K("mask").show();
+			K("alert").html("您挂了!");
+		},
+		go:function(dir){//传入键盘操作方向
+			if(dir=="left"){
+				if(this.head%20==0){//越界则结束
+					this.gameOver();
+					return false;
+				}
+				this.show(-1);
+			}else if(dir=="up"){
+				try{
+						this.show(-20);
+					}catch(e){	//上边越界
+						this.gameOver();
+					}		
+			}else if(dir == "right"){
+				if((this.head+1)%20==0){//越界则结束
+					this.gameOver();
+					return false;
+				}
+				this.show(1);//返回第一
+			}else if(dir=="down"){
+				try{
+					this.show(20);
+				}catch(e){	//下边越界
+					this.gameOver();
+				}
+			}
+		},
+		letGo:function(dir){//移动
+			var _this = this;
+			clearInterval(this.timer);//先清除
+			this.timer = null;
+			this.pause = false;//不停止
+			this.checkBody();
+			if(dir == "left" || dir == "up" || dir == "down" || dir == "right"){		
+				this.go(dir);
+				_this.timer = setInterval(function(){
+					if(_this.over == true){
+						clearInterval(_this.timer); 
+						return;
+					}
+					_this.go(dir);
+				},_this.speed);	
+			}	
+		},
+		checkPau:function(){//检查是否暂停
+			K("alert").hide();
+			K("mask").hide();
+			if(!this.pause){//没停
+				this.letGo(this.action);
+				this.pause = true;
+			}else{
+				clearInterval(this.timer);//先清除
+				this.timer = null;
+				this.pause = false;
+			}
+		},
+		bindKey:function(){
+			var _this = this;
+			K(document).bind('keydown', function (KEvent) {
+				switch(KEvent.key.toLowerCase()){
+					case "right" :
+						if(!_this.over){
+							if(_this.action!=="left"){
+								_this.action = "right";
+								_this.pause = false;
+								_this.checkPau();
+							}else{
+								return false;
+							}
+						}
+					break;
+					case "left" :
+						if(!_this.over){
+							if(_this.action!=="right"){
+								_this.action = "left";
+								_this.pause = false;
+								_this.checkPau();
+							}else{
+								return false;
+							}
+						}
+					break;
+					case "up" :
+						if(!_this.over){
+							if(_this.action!=="down"){
+								_this.action = "up";
+								_this.pause = false;
+								_this.checkPau();
+							}else{
+								return false;
+							}
+						}
+					break;
+					case "down":
+						if(!_this.over){
+							if(_this.action!=="up"){
+								_this.action = "down";
+								_this.pause = false;
+								_this.checkPau();
+							}else{
+								return false;
+							}
+						}
+					break;
+					case "space":
+						if(!_this.over){//暂停
+							_this.checkPau();
+						}
+					break;
+					default:
+					return false;
+				}
+			})
+		}
+	})
+
+		var c = new snake(200);
+
+		//k("test").fx({ left: 11 }, 80);/k("test1").fx()
+</script>
+</BODY>
+</HTML>

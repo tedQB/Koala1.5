@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K/KK().sibling</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">DOM操作</a><i>&gt;</i><a href="javascript:void(0)">样式相关</a><i>&gt;</i><span>K/KK().css</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K/KK().css(style)
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+<textarea name="code" class="js" id="code">
+ 动态添加样式,动态获取样式
+</textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+      <div class="qbar mt10">
+           	  <p><i>１.</i>动态设置样式</p>
+		   <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>style</b> 
+                    </td>
+                    <td>
+                        String ->("background-color:red;font-size:14px") css式<br />
+                        object ->(BackgroundColor:"red"; FontSize:"14px") 脚本峰驼式<br />
+                    </td>
+                    <td>
+                       样式设置方式
+                    </td>
+               </tr>
+               
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        kdoms
+                    </td>
+                    <td>
+                        返回doms链 
+                    </td>
+               </tr>
+           </table>
+      </div>
+
+      <div class="qbar mt10">
+	             	  <p><i>１.</i>动态获取样式</p>
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>style</b> 
+                    </td>
+                    <td>
+                        String 
+                    </td>
+                    <td>
+                       样式获取方式
+                    </td>
+               </tr>
+               
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        kdoms
+                    </td>
+                    <td>
+                        返回doms链 
+                    </td>
+               </tr>
+           </table>
+      </div>	  
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p> 使用K/KK().css(style)综合示例</p>
+      </div>
+      
+<textarea class="html code code_html" style="height:345px; ">
+
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<body>
+<div id="e1">1</div>
+<div id="e2">2</div>
+<div id="e3">3</div>
+<script>
+    window.onload = function () {
+        K("e2").css("width:100px; height:50px; font-weight:bold; background-color:green; color:blue; color:#fff");
+        K("e3").css({ width: "100px", height: "50px", fontWeight: "bold", backgroundColor: "blue", color: "#fff" });
+		
+				alert(K("e2").css("width")) //100px; 
+    }
+    /*
+    结果：
+        try yourself.
+    */
+
+    </script>
+
+</body>
+
+
+
+</textarea>
+<br />
+
+
+
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p>
+          css提供了2中设置样式的方式,一种是基于css写法还有js脚本峰驼式写法，同样支持获取样式
+        </p>
+      </div>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.1.4 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+    addOnLoad(function () {
+        dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+        dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+        dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+        dp.SyntaxHighlighter.HighlightAll("code");
+    });
+	</script>
+</body>
+</html>

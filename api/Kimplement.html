@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../css/content.css" />
+    <script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">核心</a><i>&gt;</i><span>K.instanceOf</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+myKClass.Kimplement(name, method);
+
+myKClass.Kimplement(methods);
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+      使用Kimplement方法可以在您的对象原型上增添新的方法
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>name </b>
+                    </td>
+                    <td>
+                       string
+                    </td>
+                    <td>
+                        方法的名称
+                    </td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>method</b>
+                    </td>
+                    <td>
+                        function
+                    </td>
+                    <td>
+                        方法函数
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        object
+                    </td>
+                    <td>
+                        Class
+                    </td>
+               </tr>
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p>使用Kimplement方法可以在您的对象原型上增添新的方法示例</p>
+      </div>
+<textarea class="js code code_js" style="height:140px; ">
+//在Array.prototype原型上扩展实例
+Array.Kimplement('findTop', function(){
+    var top=0;
+    for (var i = 0, l = this.length; i < l;i++){
+        if (this[i] > top) top=this[i];
+    }
+    return top;
+});
+alert([1, 2, 3, 4, 5, 9].findTop(4)); // returns [1, 2, 3, 4, 4, 4]
+</textarea>
+<br />
+<textarea class="js code code_js" style="height:400px; ">
+//在自己创建的对象上扩展实例
+    var Animal = K.fn.create({     
+        init: function(name, sound)   
+        {       
+            this.name = name;       
+            this.sound = sound;     
+        },     
+        speak: function()   
+        {       
+            alert(this.name + " says: " + this.sound + "!");     
+        }   
+     });   
+      
+     var Elephant=new Animal("Elephant",'nnnnnnn');  
+     Elephant.speak();  
+     Animal.Kimplement({
+        run:function(){
+            alert(this.name + " is runing ");   
+        },
+        drink:function(){
+            alert( this.name+ " is drinking ");
+        }
+     })
+
+     Elephant.run();
+     Elephant.drink();
+
+</textarea>
+        
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+
+<textarea name="code" class="js" id="Textarea1">
+ 无论您用原始的方式还是用K.fn.create()创建对象，都是可以用Kimplement方法来动态增添原型方法的。如下：
+var Animal=function(name,sound){  
+    this.name=name;  
+    this.sound=sound;  
+}  
+Animal.prototype={  
+    speak:function(){  
+        alert(this.name + " says: " + this.sound + "!");    
+    }  
+}  
+var Elephant=new Animal("Elephant",'nnnnnnn'); 
+Animal.Kimplement({
+    run:function(){
+        alert(this.name + " is runing ");   
+    },
+    drink:function(){
+          alert( this.name+ " is drinking ");
+    }
+})  
+Elephant.run();
+这样可以把下面的添加手动添加prototype代码风格给淘汰掉 
+Animal.prototype.run=function(){ 
+    alert(this.name + " is runing ");   
+}
+Animal.prototype.drink=function(){ 
+    alert( this.name+ " is drinking ");  
+}
+
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>1.</i>注意：不推荐在本地对象原型上扩展，可能会引起门户跨不同技术部门脚本原型冲突</p>
+      </div>
+      <div class="qbar mt10">
+      	<p><i>2.</i>使用K.fn.create()创建的对象最好使用addMethod方法扩展原型prototype，因为可以使用Ksuper快速继承父类方法的功能。</p>
+      </div>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+	addOnLoad(function(){
+	dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+	dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+	dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+	dp.SyntaxHighlighter.HighlightAll("code");
+	});
+	</script>
+</body>
+</html>

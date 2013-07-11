@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">插件编写方法</a><i>&gt;</i><span>K.P.fn.extend</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K.extend(obj)
+K.extend(destination,source)
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+       1，在Koala名称空间基础上添加自己所需要的方法
+       2，一种快速原型继承的工具，等同于K.O.Kextend方法
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+                <tr>
+                    <td>
+                        <b>object</b> 
+                    </td>
+                    <td>
+                       literals
+                    </td>
+                    <td>
+                        扩展的单例模式字面量
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        无
+                    </td>
+                    <td>
+                        无
+                    </td>
+               </tr>
+           </table>
+      </div>       
+     
+       <div class="qbar mt10">
+           <table cellspacing="0" cellpadding="0" border="0">
+               <tbody><tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+               <tr>
+                    <td>
+                        <b>destination</b>
+                    </td>
+                    <td>
+                        object
+                    </td>
+                    <td>
+                        需要原型扩展的目标
+                    </td>
+               </tr>
+<tr>
+                    <td>
+                        <b>source</b>
+                    </td>
+                    <td>
+                        object
+                    </td>
+                    <td>
+                        继承的父对象
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        Object
+                    </td>
+                    <td>
+                       destination对象
+                    </td>
+               </tr>
+           </tbody></table>
+      </div>
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 使用K.extend示例</p>
+      </div>
+<textarea class="js code code_js" style="height:100px; ">
+K.extend({            
+      myAlert1:function(){           
+         alert("alert1");
+      },           
+      myAlert2:function(){
+        alert("alert2");
+      }
+});       
+K.myAlert1();
+K.myAlert2();
+/*
+    结果：
+    'alert1','alert2'
+*/
+
+</textarea>
+
+<div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>2.</i> 利用K.extend继承父对象示例</p>
+      </div>
+<textarea class="js code code_js" style="height:100px; ">
+var Animal=function(){  
+}  
+Animal.prototype={  
+    speak:function(){  
+        alert("I'am an animal");    
+    },  
+    run:function(){ 
+        alert("I can run!")
+    },
+    eat:function(){ 
+        alert("I like eating food")
+    }
+}  
+var LazyAnimal=new Animal();
+
+  K.extend(Koala,LazyAnimal);
+  Koala.speak();
+  Koala.run();
+
+/*
+    结果：
+    I'am an animal,
+    I can run!
+*/
+
+</textarea>
+<br />
+<textarea class="js code code_js" style="height:100px; ">
+Animal={  
+    speak:function(){  
+        alert("I'am an animal");    
+    },  
+    run:function(){ 
+        alert("I can run!")
+    },
+    eat:function(){ 
+        alert("I like eating food")
+    }
+}  
+var Koala={}
+
+  K.extend(Koala,Animal);
+  Koala.speak();
+  Koala.run();
+
+
+/*
+    结果：
+    I'am an animal,
+    I can run!
+*/
+
+</textarea>
+
+        
+</div>
+       
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+<textarea class="js code code_js" style="height:100px; ">
+K.myAlert3=function(){ alert("alert3"); }           
+K.myAlert4=function(){ alert("alert4"); }
+    
+K.myAlert3();
+K.myAlert4();
+/*
+    用上面代码同样也可以同样的扩展为Koala类扩展方法
+
+*/
+
+</textarea>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2011.12.2 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+    addOnLoad(function () {
+        dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+        dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+        dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+        dp.SyntaxHighlighter.HighlightAll("code");
+    });
+	</script>
+</body>
+</html>

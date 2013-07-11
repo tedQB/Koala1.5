@@ -1,0 +1,21 @@
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+
+<body>
+<img id="girl" src="http://mat1.gtimg.com/www/iskin960/qqcomlogo.png" />
+<p>鼠标滑动到图片</p>
+<script>
+
+    window.onload = function () {
+        K("girl").click(function () { alert('qq.com') });
+        K("girl").hover(
+            function(){ K("girl").css("border:1px solid red") },
+            function(){ K("girl").css("border:none")}
+        )
+    }
+    /*
+    结果：
+    try yourself.
+    */
+    </script>
+
+</body>

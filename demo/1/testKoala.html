@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+    <script type="text/javascript" src="Koala.js"></script>
+</head>
+<style type="text/css">
+body{height:800px; }
+</style>
+<body>
+<div id="box">
+    <div attr="1">111</div>
+    <div attr="0" class="bb">222</div>
+    <div attr="1">333</div>
+</div>
+<div id="e1" style="width:100px;height:100px">1</div>
+<div id="e2">2</div>
+<div id="e3">3</div>
+<script>
+    window.onload = function () {
+        log(K("box").getBy("div").len);
+        log(K("box").getBy("div.bb").item(0).html());
+    }
+    /*
+    结果：
+    try yourself.
+    */
+
+</script>
+<!--
+<body>
+<div id="pagex" class="box">鼠标X坐标</div>
+<div id="pagey" class="box">鼠标Y坐标</div>
+<br />
+<script>
+         K(window).bind('mouseover', function (KEvent) {
+             K("pagex").html(KEvent.page.x);
+             K("pagey").html(KEvent.page.y);
+         })
+    /*
+    结果：
+    <div id="mask" class="box" style="display:none">5555555</div>
+    */
+
+    </script>
+
+</body>
+
+
+
+<body id="body">
+    <input type="type" name="name" value=" " id="d1" />
+    <a id="myAnchor" href="http://google.com/">Visit Google.com</a>
+    
+    <div id="myElement">
+        <div id="myChild" onclick="return false;">aa</div>
+    </div>    
+
+<div id="box" style="display:none">    
+    box12325346376
+	<br />
+	box12325346376<br />
+	box12325346376
+</div>
+<div id="box2" style="display:block; border:1px solid red" >
+     box12325346376
+	<br />
+	box12325346376<br />
+	box12325346376
+</div>
+
+<span class="sp">span1</span>
+<span class="sp">span2</span>
+<br />
+<span>span3</span>
+<span>span4</span>
+<br />
+<script type="text/javascript">
+    K("box2").click(function () {
+        log("en");
+    })
+
+    var elems = KK("#d1", "#d2").css("color", "red").addClassName("d1");
+//    elems.each(function (obj, index) {
+//        log(index + ": 节点" + obj.node + ": 节点名称" + obj.tag);
+//    })
+    /*
+        0: 节点[object HTMLDivElement]: 节点名称div
+        1: 节点[object HTMLDivElement]: 节点名称div
+    */
+    log(KK("span").each(function (obj, index){
+        obj.append("dafadfasdfas");
+    }));
+
+    </script>
+ <script type="text/javascript">
+
+
+ </script>-->
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿.dp-highlighter { font-family:Menlo,Monaco,'DejaVu Sans Mono','Bitstream Vera Sans Mono','Consolas','Courier New',Courier,monospace; font-size: 12px;width: 99%; overflow: auto; margin:0}
+/* clear styles */
+.dp-highlighter ol, .dp-highlighter ol li, .dp-highlighter ol li span { margin: 0; padding: 0; border: none; }
+.dp-highlighter a, .dp-highlighter a:hover { background: none; border: none; padding: 0; margin: 0; }
+.dp-highlighter .bar { padding-left: 45px; display:none}
+.dp-highlighter.collapsed .bar, .dp-highlighter.nogutter .bar { padding-left: 0px; }
+.dp-highlighter ol { list-style: decimal; /* for ie */ background-color: #fff; margin: 0px 0px 1px 15px !important; border: 1px solid #A6B2A6;border-left: 3px solid #A6B2A6; /* 1px bottom margin seems to fix occasional Firefox scrolling */color: #95AA93; padding:5px 0}
+.dp-highlighter.nogutter ol, .dp-highlighter.nogutter ol li { list-style: none !important; margin-left: 0px !important; }
+.dp-highlighter ol li, .dp-highlighter .columns div { list-style: none; /*decimal-leading-zero*/ /* better look for others, override cascade from OL */ list-style-position: outside !important; /*border-left: 3px solid #39798D;*/ background-color: transparent; color: #95AA93; padding: 0 3px 0 10px !important; margin: 0 !important; line-height: 1.5; }
+.dp-highlighter.nogutter ol li, .dp-highlighter.nogutter .columns div { border: 0; }
+.dp-highlighter .columns { background-color: #F8F8F8; color: gray; overflow: hidden; width: 100%; }
+.dp-highlighter .columns div { padding-bottom: 5px; }
+.dp-highlighter ol li.alt { background-color: transparent; color: inherit; }
+.dp-highlighter ol li span { color: black; background-color: inherit; color:#666; word-break : break-all;word-wrap : break-word; display:inline-block \9}
+/* Adjust some properties when collapsed */
+
+.dp-highlighter.collapsed ol { margin: 0px; }
+.dp-highlighter.collapsed ol li { display: none; }
+/* Additional modifications when in print-view */
+
+.dp-highlighter.printing { border: none; }
+.dp-highlighter.printing .tools { display: none !important; }
+.dp-highlighter.printing li { display: list-item !important; }
+/* Styles for the tools */
+
+.dp-highlighter .tools { padding:0 0 5px; text-align:left; font: 9px Verdana, Geneva, Arial, Helvetica, sans-serif; color: silver; background-color: transparent;}
+.dp-highlighter.nogutter .tools { border-left: 0; }
+.dp-highlighter.collapsed .tools { border-bottom: 0; }
+.dp-highlighter .tools a { color:#121516; font-family:微软雅黑; font-size:12px;border-radius:3px; border:1px solid #93A98F; padding:2px 5px; display: inline; zoom:1; display: inline-block;background:#D2DFC5;
+    background:-webkit-gradient(linear, left top, left bottom, from(#D2DFC5), to(#BDD1B4) );background:-moz-linear-gradient(-90deg, #D2DFC5, #BDD1B4);_background:#D2DFC5;_filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#D2DFC5', EndColorStr='#BDD1B4');-wwwebkit-box-shadow:0 1px 0 rgba(255,255,255,0.5);
+    -mmmoz-box-shadow:0 1px 0 rgba(255,255,255,0.5); margin-right:5px;}
+.dp-highlighter .tools a:hover {-wwwebkit-box-shadow:0 1px 0 rgba(255,255,255,0.3);
+    text-decoration:none;
+    background:#E0E9DA;
+    background:-webkit-gradient(linear, left top, left bottom, from(#E0E9DA), to(#C2D5B8) );
+    background:-moz-linear-gradient(-90deg, #E0E9DA, #C2D5B8);
+    _background:#E0E9DA;
+    _filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#E0E9DA', EndColorStr='#C2D5B8');}
+/* About dialog styles */
+
+.dp-about { background-color: #fff; color: #333; margin: 0px; padding: 0px; }
+.dp-about table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
+.dp-about td { padding: 10px; vertical-align: top; }
+.dp-about .copy { border-bottom: 1px solid #ACA899; height: 95%; }
+.dp-about .title { color: red; background-color: inherit; font-weight: bold; }
+.dp-about .para { margin: 0 0 4px 0; }
+.dp-about .footer { background-color: #ECEADB; color: #333; border-top: 1px solid #fff; text-align: right; }
+.dp-about .close { font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; background-color: #ECEADB; color: #333; width: 60px; height: 22px; }
+/* Language specific styles */
+
+.dp-highlighter .comment, .dp-highlighter .comments { color: #999; background-color: inherit; }
+.dp-highlighter .string { color: blue; background-color: inherit; }
+.dp-highlighter .keyword { color: #069; font-weight: bold; background-color: inherit; }
+.dp-highlighter .preprocessor { color: gray; background-color: inherit; }

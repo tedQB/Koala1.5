@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>K.fn.create</title>
+<link href="http://mat1.gtimg.com/www/base/base.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://mat1.gtimg.com/joke/Koala/content.css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/Koala/Koala.min.1.5.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/highlight.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/eval.js"></script>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/jseval.js"></script>
+
+</head>
+<body>
+<div class="content">
+<div class="qTitle">
+    <div class="qTitleInner">
+      <h2>API说明</h2>
+    </div>
+  </div>    
+  <div class="crumbs"><a href="javascript:void(0)">自定义数组方法</a><i>&gt;</i><span>K.A.each</span></div>
+  <div class="article">
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>说明</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+      <div class="qbar mt10">
+      	<p><i>1.</i>方法</p>
+      </div>
+<textarea name="code" class="js" id="code">
+K.A.each(iteration,func,arr)
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>2.</i>概述</p>
+      </div>
+
+      <textarea name="code" class="js" id="code">
+        公共静态方法迭代器
+      </textarea>
+      <div class="qbar mt10">
+      	<p><i>3.</i>语法</p>
+      </div>
+       <div class="qbar mt10">
+           <table border="0" cellpadding="0" cellspacing="0">
+               <tr>
+                   <th>
+                   参数名称
+                   </th>
+                   <th>
+                   类型
+                   </th>
+                   <th>
+                    描述
+                   </th>
+               </tr>
+                <tr>
+                    <td>
+                        <b>iteration</b>
+ 
+                    </td>
+                    <td>
+                        Array|Object|Number
+                    </td>
+                    <td>
+                        要迭代的对象
+                    </td>
+               </tr>
+<tr>
+                    <td>
+                        <b>func</b>
+ 
+                    </td>
+                    <td>
+                        Function
+                    </td>
+                    <td>
+                        负责迭代的函数
+                    </td>
+               </tr>
+<tr>
+                    <td>
+                        <b>Arr</b>(可选)
+ 
+                    </td>
+                    <td>
+                        Array
+                    </td>
+                    <td>
+                        迭代产生的数组结果
+                    </td>
+               </tr>
+               <tr>
+                  <td colspan="3">&nbsp;</td>
+               </tr>
+               <tr>
+                    <td>
+                        <b>返回值</b>
+ 
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                     
+                    </td>
+               </tr>
+           </table>
+      </div>       
+      </div>
+    </div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>演示</h3>
+      </div>
+    </div>
+    <div class="cItem">
+    <div class="cItemInner">
+
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 使用K.A.each示例</p>
+      </div>
+<textarea class="js code code_js" style="height:254px; ">
+    //support Array
+    K.A.each(['one', 'two', 'three'],function(s){ alert(s) } ); 
+    //support Number
+    K.A.each(5,function(s){ alert(s)} );
+    //support index
+    K.A.each(['hello', 'world'],function(s,index){ alert(index+": "+s) })
+    //support object
+    K.A.each({ Koala:'john', say:'Hi'},function(s,index){ alert( index+": "+s ) })
+    /*
+       alert: 
+            one,two,three 
+            1,2,3,4,5
+            1:hello, 2:world 
+            Koala:john, say:'Hi'
+    */
+
+</textarea>
+
+      <div class="qbar mt10">
+      	<p><i>1.</i> 使用K.A.each返回迭代结果示例</p>
+      </div>
+<textarea class="js code code_js" style="height:254px; ">
+    //support Array
+    var arr=K.A.each(['one', 'two', 'three'],function(obj,i,arr){ 
+        arr[i]=obj+":"+i;
+    }
+   );
+    alert(arr)  
+    //support Number
+    /*
+       alert: 
+        one:0,two:1,three:2
+    */
+
+</textarea>
+        
+</div>
+
+
+</div>
+    <div class="tItem">
+      <div class="tItemInner">
+        <h3>更多解释</h3>
+      </div>
+    </div>
+    <div class="cItem">
+      <div class="cItemInner">
+          <p>
+            熟练使用each可以减少for循环的使用
+          </p>
+      </div>
+    </div>
+<div class="tItem">
+  <div class="tItemInner">
+    <h3>代码维护</h3>
+  </div>
+</div>
+<div class="cItem">
+  <div class="cItemInner">
+    <p>By. <span class="author">boqiu</span> 2012.09.04 update</p>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="splitter"><a href="#"></a>
+</div>
+<script type="text/javascript" src="http://mat1.gtimg.com/joke/api/ycnlib2.js"></script> 
+<script type="text/javascript">
+    ycnlib.require("http://mat1.gtimg.com/joke/api/xyntaxhighlighter.css", "http://mat1.gtimg.com/joke/api/shcore.js", "http://mat1.gtimg.com/joke/api/shbrushjscript.js", "http://mat1.gtimg.com/joke/api/shbrushxml.js", "http://mat1.gtimg.com/joke/api/shbrushcss.js");
+    addOnLoad(function () {
+        dp.sh.Toolbar.Commands.ViewSource.label = "新窗口查看源码";
+        dp.sh.Toolbar.Commands.CopyToClipboard.label = "复制代码";
+        dp.SyntaxHighlighter.ClipboardSwf = "http://mat1.gtimg.com/joke/api/clipboard.swf";
+        dp.SyntaxHighlighter.HighlightAll("code");
+    });
+	</script>
+</body>
+</html>
