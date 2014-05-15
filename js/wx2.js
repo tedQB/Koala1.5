@@ -123,7 +123,7 @@ $("#mask").hide();
 		//usename id名称， txt发送的内容
 		var def = new $.Deferred();
 		H.openChat(username).pipe(function() {
-			return H.sendChat('');
+			return H.sendChat(txt);
 		}).done(function() {
 			setTimeout(function() {
 				console.log("send success");
