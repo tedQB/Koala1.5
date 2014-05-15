@@ -6,6 +6,7 @@ $("#mask").hide();
 
 (function(H, $) {
 	H.boxHTML = '<div><button id="wxh_show" style="float:left">群发助手</button><button id="wxh_hide" style="display:none;float:right">关闭</button></div><div style="clear:both"></div><div id="wxh_main" style="background-color:#E9E9E9;padding:5px;display:none;border:2px dotted #6B747A;"><div style="float:left;"><span id="wxh_friends_tab" style="cursor:pointer;background-color:#999;color:#fff">选择联系人</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="wxh_rooms_tab" style="cursor:pointer">选择群组</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="wxh_expire_tab">选择到期联系人</span></div><div style="clear:both"></div><div style="height:300px;float:left;width:300px;border:1px solid #999;overflow:auto"><div id="wxh_friends_list" style="height:300px"><input id="wxh_search" style="width:270px" type="search"><div id="wxh_friends_div" style="height:270px"></div></div><div id="wxh_rooms_list" style="display:none"></div><div id="wxh_expire_list" style="display:none"></div></div><div style="clear:both"></div><div style="margin:5px;"><select style="width:290px;height:22px;margin:5px" id="wxh_templates"><option>选择群发模板</option></select><div style="clear:both"></div><textarea id="wxh_text" style="float:left;height:80px;width:200px;"></textarea><select id="wxh_interval" style="width:75px"><option value="2">发送间隔</option><option value="0">10秒内随机</option><option value="2">2秒</option><option value="3">3秒</option><option value="5">5秒</option><option value="8">8秒</option><option value="15">15秒</option></select><button id="wxh_send" style="margin-top:40px">群发</button></div><div style="clear:both"></div></div>';
+	H.boxHTML = '<div><button id="wxh_show" style="float:left">群发助手</button><button id="wxh_hide" style="display:none;float:right">关闭</button></div><div style="clear:both"></div><div id="wxh_main" style="background-color:#E9E9E9;padding:5px;display:none;border:2px dotted #6B747A;"><div style="float:left;"><span id="wxh_friends_tab" style="cursor:pointer;background-color:#999;color:#fff">选择联系人</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="wxh_rooms_tab" style="cursor:pointer">选择群组</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="wxh_expire_tab">选择到期联系人</span></div><div style="clear:both"></div><div style="height:300px;float:left;width:300px;border:1px solid #999;overflow:auto"><div id="wxh_friends_list" style="height:300px"><input id="wxh_search" style="width:270px" type="search"><div id="wxh_friends_div" style="height:270px"></div></div><div id="wxh_rooms_list" style="display:none"></div><div id="wxh_expire_list" style="display:none"></div></div><div style="clear:both"></div><div style="margin:5px;"><select style="width:290px;height:22px;margin:5px" id="wxh_templates"><option>选择群发模板</option></select><div style="clear:both"></div><textarea id="wxh_text" style="float:left;height:80px;width:200px;"></textarea><select id="wxh_interval" style="width:75px"><option value="2">发送间隔</option><option value="0">10秒内随机</option><option value="2">2秒</option><option value="3">3秒</option><option value="5">5秒</option><option value="8">8秒</option><option value="15">15秒</option></select><button id="wxh_send" style="margin-top:40px">群发</button></div><div style="clear:both"></div></div>';
 	H.templates = ["恭喜发财,大吉大利!"];
 	H.addrList = {
 		rooms: [],
@@ -18,7 +19,7 @@ $("#mask").hide();
 	H.dataReady = false;
 	H.openChat = function(username) {
 		var def = new $.Deferred();
-		var a = $("#con_item_" + username);
+		var a = $("#con_item_" + username.replace(/\-/g,''));
 		a.click();
 		setTimeout(function() {
 			var sent = $("input[username=" + username + "]");
@@ -119,9 +120,10 @@ $("#mask").hide();
 	};
 
 	H.send = function(username, txt) {
+		//usename id名称， txt发送的内容
 		var def = new $.Deferred();
 		H.openChat(username).pipe(function() {
-			return H.sendChat(txt);
+			return H.sendChat('');
 		}).done(function() {
 			setTimeout(function() {
 				console.log("send success");
@@ -355,7 +357,8 @@ $("#mask").hide();
 			alert("先写点什么吧~");
 			return;
 		}
-		H.taskList = [];
+		H.taskList = [];//已经群发名单但是仍有遗漏
+		H.taskListBark = [];//应该全部群发的名单
 		var str = $("#wxh_text").val().trim();
 		var hasName = false;
 		if (str.indexOf("{{名字}}") > -1) {
@@ -372,6 +375,7 @@ $("#mask").hide();
 				nickList.push(task.displayname);
 				task.text = str.split("{{名字}}").join(task.displayname);
 				H.taskList.push(task);
+				H.taskListBark.push(task);
 			}
 		});
 		if (H.taskList.length === 0) {
@@ -395,13 +399,63 @@ $("#mask").hide();
 
 		}
 	};
-
+	H.execLeft=function(t){ 
+		if (t !== 0) {
+			t = 1;
+		}
+		if (H.taskListBark.length === 0) {
+			if(!H.taskListBark.length){
+				console.log("exec all complete!");	
+			}
+			//console.log('The remaining perform');
+			
+		
+		} else {
+			var interval = $("#wxh_interval").val() - 2;
+			if ($("#wxh_interval").val() === "0") {
+				interval = Math.floor(Math.random() * 8);
+			}
+			interval = interval * 1000 * t;
+			//console.log("interval:"+interval);
+			console.log(H.taskListBark.length);
+			var task = H.taskListBark.pop();
+			console.log(task);
+			setTimeout(function(){
+				H.send(task.username, task.text).done(H.execLeft);
+			}, interval)
+		}		
+	};
 	H.exec = function(t) {
 		if (t !== 0) {
 			t = 1;
 		}
 		if (H.taskList.length === 0) {
-			console.log("exec complete!");
+			console.log("exec all complete!");			
+			var hasExecTask=[];
+			$('#conversationContainer').find('.chatListColumn').each(function(index,obj){ 
+				hasExecTask.push($(obj).attr('username'));
+				//task可以根据username 直接触发，因为它是遍历name 找到contactId进行触发。
+			});
+			for(var j=0;j<hasExecTask.length;j++){
+				
+				for(var m=0;m<H.taskListBark.length;m++){
+					if(H.taskListBark[m].username==hasExecTask[j])
+					H.taskListBark.remove(H.taskListBark[m]);
+				}
+			};
+			//console.log(H.taskListBark)
+			
+			var taskLeft = H.taskListBark.pop();
+			if(taskLeft){
+				console.log('The remaining perform');
+				setTimeout(function() {
+					H.send(taskLeft.username, taskLeft.text).done(H.execLeft);
+				}, interval)			
+			}else{ 
+				console.log('all complete');
+			}
+			
+			
 		} else {
 			var interval = $("#wxh_interval").val() - 2;
 			if ($("#wxh_interval").val() === "0") {
@@ -427,4 +481,19 @@ $("#mask").hide();
 		H.boot();
 	});
 	H._test = function() {}
+
+	Array.prototype.indexOf = function(val) {              
+		for (var i = 0; i < this.length; i++) {  
+			if (this[i] == val) return i;  
+		}  
+		return -1;  
+	};  
+
+	Array.prototype.remove = function(val) {  
+		var index = this.indexOf(val);  
+		if (index > -1) {  
+			this.splice(index, 1);  
+		}  
+	};
+	
 })(wx_helper, jQuery);
