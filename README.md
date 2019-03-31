@@ -4,7 +4,7 @@ Koala是一个便捷，轻巧的新型面向对象的javascript框架，综合�
 从而专注于程序应用逻辑的实现，使得代码更加的健壮。另外如果您被各种"$"符号搞的晕头转向的时候，那就尝试一下Koala吧！
 
 
-Koala javascript文档线上地址：http://koala5.sinaapp.com/
+Koala cdn http://mat1.gtimg.com/www/js/Koala/Koala.dev.1.5.js
 
 更新日记：
 
@@ -45,3 +45,9 @@ Koala javascript文档线上地址：http://koala5.sinaapp.com/
     6.修整了若干文档bug  
       
         1.6版本计划:Koala离子CMD模块化  
+ ----
+ 
+ 2013年1月1日
+ 
+ 本项目不再维护，腾讯地方站的开发人员请迁移到其他框架
+ 
